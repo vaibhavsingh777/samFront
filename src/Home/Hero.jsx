@@ -3,7 +3,9 @@ const Hero = () => {
     <section className="relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Welcome to SAM </h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Welcome to SAM{" "}
+          </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
             Discover amazing features that will transform your experience
           </p>
@@ -14,7 +16,7 @@ const Hero = () => {
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-white transform skew-y-1 -translate-y-1/2"></div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
