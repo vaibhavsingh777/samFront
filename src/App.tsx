@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -31,3 +32,18 @@ function App() {
 }
 
 export default App;
+=======
+import React from 'react';
+import Home from './Home';
+
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      
+      <Home />
+    </div>
+  );
+};
+
+export default App;
+>>>>>>> 98da14b325674086f281144431041b44d4ddecfb
