@@ -1,8 +1,23 @@
 import { useState } from 'react';
 
 export default function Register() {
+
+  <label>I am*<br />
+  <select
+    name="status"
+    value={form.status}
+    onChange={handleChange}
+    required
+  >
+    <option value="">--Select--</option>
+    <option value="Joining IIT Bombay this year">Joining IIT Bombay this year</option>
+    <option value="Joining some other IIT this year">Joining some other IIT this year</option>
+    <option value="Already a student of IIT B">Already a student of IIT B</option>
+  </select>
+</label>
+
   const [form, setForm] = useState({
-    status: '',
+    
     name: '',
     phone: '',
     email: '',
@@ -12,6 +27,7 @@ export default function Register() {
     questions: '',
     file: null
   });
+  
 
   const [submitted, setSubmitted] = useState(false);
 
