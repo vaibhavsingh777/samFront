@@ -1,107 +1,171 @@
 import React from "react";
 import sarcLogo from "../assets/sarcbw.png";
+import Marquee from "react-fast-marquee";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-    <footer
+const marqueeText = "Connecting students and alumni across generations...";
+const Footer = () => (
+  <footer
+    style={{
+      backgroundColor: "#fff", // Footer is full white
+      color: "#1A237E", // All text is deep blue
+      textAlign: "center",
+      padding: "0 0 0 0",
+      position: "relative",
+      bottom: 0,
+      width: "100%",
+      marginTop: "2rem",
+      fontWeight: "500",
+      fontSize: "clamp(1rem, 2vw, 1.2rem)",
+      boxSizing: "border-box",
+      maxWidth: "100vw",
+      overflow: "hidden",
+      minHeight: "7rem",
+      display: "block",
+    }}
+  >
+    {/* Flex row: logo + contact */}
+    <div
       style={{
-        backgroundColor: "#fff",
-        color: "#1A237E",
-        padding: "2rem 0 1rem",
-        width: "100%",
-        fontFamily: "'Poppins', sans-serif",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        gap: "2rem",
+        maxWidth: "900px",
+        margin: "0 auto",
+        padding: "1.5rem 2vw 1rem 2vw",
       }}
     >
+      {/* sarc white Logo on the left */}
+      <div style={{ flex: "0 0 auto", marginTop: "0.35rem" }}>
+        <img
+          src={sarcLogo}
+          alt="SARC Logo"
+          style={{ height: "64px", width: "auto", borderRadius: "8px" }}
+        />
+      </div>
+      {/* Contact Section */}
       <div
         style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 1.5rem",
+          flex: 1,
           display: "flex",
-          flexWrap: "wrap", // ensures responsiveness
-          justifyContent: "space-between",
-          gap: "2rem",
+          flexDirection: "column",
+          gap: "1rem",
+          fontSize: "1.15rem",
+          textAlign: "left",
+          justifyContent: "center",
         }}
       >
-        {/* Logo */}
         <div
           style={{
-            flex: "1 1 220px",
             display: "flex",
             alignItems: "center",
-            gap: "1rem",
+            gap: "0.75rem",
+            color: "#1A237E",
           }}
         >
-          <img
-            src={sarcLogo}
-            alt="SARC Logo"
-            style={{
-              height: "80px",
-              width: "auto",
-              borderRadius: "12px",
-              padding: "6px",
-            }}
-          />
+          <FaMapMarkerAlt size={24} color="#1A237E" />
+          <span>SARC Room, SAC, IITB</span>
         </div>
-
-        {/* Cities */}
         <div
           style={{
-            flex: "1 1 200px",
             display: "flex",
-            flexDirection: "column",
-            gap: "0.4rem",
+            alignItems: "center",
+            gap: "0.75rem",
+            color: "#1A237E",
           }}
         >
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 600 }}>Cities</h3>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap", // responsiveness
-              gap: "0.6rem",
-              marginTop: "0.2rem",
-            }}
+          <FaPhoneAlt size={24} color="#1A237E" />
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span>Arush Srivastav: +91 9005549919</span>
+            <span>Khushi Yadav: +91 8930097733</span>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+            color: "#1A237E",
+          }}
+        >
+          <FaEnvelope size={24} color="#1A237E" />
+          <a
+            href="mailto:web@sarc-iitb.org"
+            style={{ color: "#1A237E", textDecoration: "underline" }}
           >
-            <span>Mumbai</span>
-            <span>Pune</span>
-            <span>Delhi</span>
-            <span>Indore</span>
-            <span>Jaipur</span>
-          </div>
-        </div>
-
-        {/* Contact Us */}
-        <div
-          style={{
-            flex: "1 1 220px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-          }}
-        >
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 600 }}>Contact Us</h3>
-          <div>
-            <span style={{ fontWeight: 500 }}>Arush Srivastava:</span>{" "}
-            <a
-              href="mailto:arush@email.com"
-              style={{ color: "#1A237E", textDecoration: "underline" }}
-            >
-              arush@email.com
-            </a>
-          </div>
-          <div>
-            <span style={{ fontWeight: 500 }}>Khushi Yadav:</span>{" "}
-            <a
-              href="mailto:khushi@email.com"
-              style={{ color: "#1A237E", textDecoration: "underline" }}
-            >
-              khushi@email.com
-            </a>
-          </div>
+            web@sarc-iitb.org
+          </a>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
+    {/* Marquees centered and full width, below the flex row */}
+    <div style={{ width: "100%", marginTop: "0.5rem" }}>
+      {/* Top Marquee */}
+      <div
+        style={{
+          width: "100vw",
+          minWidth: "500px",
+          maxWidth: "20000px",
+          margin: "0 auto",
+          background: "#1A237E", // Marquee background deep blue
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+          transform: "rotate(-3deg)",
+          overflow: "hidden",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Marquee
+          direction="right"
+          gradient={false}
+          speed={35}
+          style={{
+            color: "#fff", // Marquee text white
+            fontWeight: 700,
+            fontSize: "1.1em",
+            padding: "0.25rem 0",
+            fontFamily: "HeadFont, sans-serif",
+          }}
+        >
+          {marqueeText} &nbsp; {marqueeText}
+        </Marquee>
+      </div>
+      {/* Bottom Marquee */}
+      <div
+        style={{
+          width: "100vw",
+          minWidth: "500px",
+          maxWidth: "20000px",
+          margin: "-1.5rem auto 0 auto",
+          background: "#1A237E", // Marquee background deep blue
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+          transform: "rotate(3deg)",
+          overflow: "hidden",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <Marquee
+          direction="right"
+          gradient={false}
+          speed={35}
+          style={{
+            color: "#fff", // Marquee text white
+            fontWeight: 700,
+            fontSize: "1.1em",
+            padding: "0.25rem 0",
+            fontFamily: "HeadFont, sans-serif",
+          }}
+        >
+          {marqueeText} &nbsp; {marqueeText}
+        </Marquee>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
