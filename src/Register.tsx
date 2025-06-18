@@ -12,10 +12,11 @@ const [form, setForm] = useState({
     iitOther: '',
     questions: '',
     category: '',
+   categoryRank: '',
   });
 
    const [submitted, setSubmitted] = useState(false);
-
+ const successRef = useRef(null);
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (e.target.type === "file") {
@@ -29,6 +30,7 @@ const [form, setForm] = useState({
     return (
       form.status &&
       form.name.trim() &&
+      /^[0-9]{10}$/.test(form.phone) &&
       form.phone.trim() &&
       form.email.trim() &&
       form.city &&
@@ -128,14 +130,14 @@ const [form, setForm] = useState({
         
 
         
-  <label for="screenshot">Upload a screenshot of your current JoSAA Choice Filling*
+  <label>Upload a screenshot of your current JoSAA Choice Filling*
 (Upload the most recent JoSAA round's screenshot or Seat Allotment letter)
 </label>
-  <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+  <input type="file" id="screenshot" name="file" accept="image/*" onChange={handleChange} required>
 
 
-    <label for="otherIIT">If not joining IIT Bombay, then which IIT will you be joining?</label>
-<select id="otherIIT" name="otherIIT">
+    <label for="iitOther">If not joining IIT Bombay, then which IIT will you be joining?</label>
+<select name="iitOther" value={form.iitOther} onChange={handleChange}>
   <option value="">-- Select IIT --</option>
   <option value="IIT Delhi">IIT Delhi</option>
   <option value="IIT Kanpur">IIT Kanpur</option>
@@ -160,79 +162,18 @@ const [form, setForm] = useState({
   <option value="IIT Dharwad">IIT Dharwad</option>
 </select>
 
-
-
-
-
-
-
-
-
-    
-
- 
-  
-
- 
-
-  return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', fontFamily: 'Arial' }}>
-      <h2>SAM 2024 Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <label>I am*<br />
-          <select name="status" value={form.status} onChange={handleChange} required>
-            <option value="">--Select--</option>
-            <option>Joining IIT Bombay this year</option>
-            <option>Joining some other IIT this year</option>
-            <option>Already a student of IIT B</option>
-          </select>
-        </label><br /><br />
-
-        <label>Full Name*<br />
-          <input type="text" name="name" value={form.name} onChange={handleChange} required />
-        </label><br /><br />
-
-        <label>Phone Number (preferably WhatsApp)*<br />
-          <input type="tel" name="phone" value={form.phone} onChange={handleChange} required />
-        </label><br /><br />
-
-        <label>Email ID*<br />
-          <input type="email" name="email" value={form.email} onChange={handleChange} required />
-        </label><br /><br />
-
-        <label>In which city will you attend SAM?*<br />
-          <select name="city" value={form.city} onChange={handleChange} required>
-            <option value="">--Select--</option>
-            <option>Mumbai</option>
-            <option>Pune</option>
-            <option>Jaipur</option>
-            <option>Indore</option>
-            <option>Delhi</option>
-          </select>
-        </label><br /><br />
-
-        <label>JEE Advanced 2024 Rank (Specify category rank also, if applicable)*<br />
-          <input type="text" name="rank" value={form.rank} onChange={handleChange} required />
-        </label><br /><br />
-
-        <label>Upload a screenshot of your current JoSAA Choice Filling*<br />
-          <input type="file" name="file" accept="image/*,application/pdf" onChange={handleChange} required />
-        </label><br /><br />
-
-        <label>If not joining IIT Bombay, then which IIT will you be joining?<br />
-          <input type="text" name="iitOther" value={form.iitOther} onChange={handleChange} />
-        </label><br /><br />
-
-        <label>Any questions you would like to ask?<br />
+             <label>Any questions you would like to ask?<br />
           <textarea name="questions" rows="4" value={form.questions} onChange={handleChange}></textarea>
         </label><br /><br />
 
         <button type="submit">Register</button>
-      
 
-      {submitted && <p style={{ color: 'green' }}>✔️ Form submitted successfully!</p>}
+        {submitted && <p style={{ color: 'green' }}>✔️ Form submitted successfully!</p>}
+      </form>
     </div>
   );
-    </input></form>
 }
+
+
+   
 
