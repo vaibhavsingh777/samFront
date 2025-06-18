@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          BestEver
+          ReconnectHub
         </Link>
         <ul className="nav-menu">
           {navItems.map((item) => (

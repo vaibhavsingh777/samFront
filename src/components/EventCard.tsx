@@ -5,23 +5,28 @@ interface EventCardProps {
   title: string;
   date: string;
   description: string;
-  image: string;
+  media: string; // Only images now
   location: string;
 }
 
-const EventCard = ({ id, title, date, description, image, location }: EventCardProps) => {
+const EventCard = ({ id, title, date, description, media, location }: EventCardProps) => {
+  const eventDate = new Date(date);
+  const day = eventDate.getDate();
+  const month = eventDate.toLocaleString('default', { month: 'short' });
+
   return (
     <div className="event-card">
-      <div className="event-image-container">
-        <img src={image} alt={title} className="event-image" />
+      <div className="event-media-container">
+        {/* Only image is rendered now */}
+        <img src={media} alt={title} className="event-image" />
         <div className="event-date">
-          <span className="event-day">{new Date(date).getDate()}</span>
-          <span className="event-month">{new Date(date).toLocaleString('default', { month: 'short' })}</span>
+          <span className="event-day">{day}</span>
+          <span className="event-month">{month}</span>
         </div>
       </div>
       <div className="event-content">
-        <h3 className="event-title">{title}</h3>
-        <p className="event-location">
+        <h3>{title}</h3>
+        <p className="location">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -33,7 +38,7 @@ const EventCard = ({ id, title, date, description, image, location }: EventCardP
           </svg>
           {location}
         </p>
-        <p className="event-description">{description}</p>
+        <p>{description}</p>
         <Link to={`/events/${id}`} className="event-link">
           View Details
           <svg

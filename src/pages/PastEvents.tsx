@@ -4,26 +4,26 @@ const PastEvents = () => {
   const events = [
     {
       id: 1,
-      title: 'Design Conference 2023',
-      date: 'May 15, 2023',
+      title: '𝕾𝖙𝖚𝖉𝖊𝖓𝖙 𝕬𝖑𝖚𝖒𝖓𝖎 𝕸𝖊𝖊𝖙 ',
+      date: '2023-05-15',
       description: 'Our annual design conference featuring industry leaders',
-      image: 'https://source.unsplash.com/random/600x400/?conference',
-      location: 'New York, NY'
+      media: 'https://tse4.mm.bing.net/th?id=OIP.Biv7_klc3mR5lzUIAIJgPAHaEK&pid=Api&P=0&h=180', // Image URL
+      location: '✧⋅⋆ MUMBAI CITY ⋆⋅✧'
     },
     {
       id: 2,
-      title: 'Color Theory Workshop',
-      date: 'March 22, 2023',
+      title: '𝕾𝖙𝖚𝖉𝖊𝖓𝖙 𝕬𝖑𝖚𝖒𝖓𝖎 𝕸𝖊𝖊𝖙 ',
+      date: '2023-03-22',
       description: 'Interactive workshop on modern color techniques',
-      image: 'https://source.unsplash.com/random/600x400/?workshop',
+      media: 'https://source.unsplash.com/random/600x400/?workshop', // Image URL
       location: 'San Francisco, CA'
     },
     {
       id: 3,
-      title: 'UX Design Summit',
-      date: 'January 10, 2023',
+      title: '𝕾𝖙𝖚𝖉𝖊𝖓𝖙 𝕬𝖑𝖚𝖒𝖓𝖎 𝕸𝖊𝖊𝖙 ',
+      date: '2023-01-10',
       description: 'Exploring the future of user experience design',
-      image: 'https://source.unsplash.com/random/600x400/?ux',
+      media: 'https://source.unsplash.com/random/600x400/?ux', // Image URL
       location: 'Chicago, IL'
     }
   ];
