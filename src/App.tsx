@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-
 import HomePage from "./pages/homepage";
+import IndiaMap from "./pages/venues";
+
 // import About from "./pages/about";
 // import Contact from "./pages/contacts";
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" replace />} />
           <Route path="/homepage" element={<HomePage />} />
+          <Route path="/venues" element={<IndiaMap />} />
         </Routes>
       </main>
 

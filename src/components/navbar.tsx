@@ -17,7 +17,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
         color: isActive ? "#1A237E" : "#FFFFFF",
         background: isActive ? "#FFFFFF" : "transparent",
         padding: "0.5rem 1rem",
-        borderRadius: "8px",
+        borderRadius: "9px",
         textDecoration: "none",
         fontWeight: 600,
         letterSpacing: "0.3px",
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
       >
         <NavLink to="/homepage">Home</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NavLink to="/pastevents">Past Events</NavLink>
+        <NavLink to="/venues">Venues</NavLink>
         <NavLink to="/testimonials">Testimonials</NavLink>
         <NavLink to="/faqs">FAQs</NavLink>
         <NavLink to="/contacts">Contact</NavLink>
