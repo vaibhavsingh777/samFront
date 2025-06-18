@@ -255,3 +255,76 @@ footer {
 .faq-answer {
   color: #e5e7eb; /* gray-200 */
 }
+/* If you're using plain CSS instead of Tailwind */
+.testimonial-card {
+  background: rgba(30, 58, 138, 0.7); /* blue-800 with 70% opacity */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.testimonial-content p {
+  color: white;
+  font-style: italic;
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  margin-right: 1rem;
+}
+
+.testimonial-author h4 {
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem; /* text-xl */
+}
+
+.testimonial-author p {
+  color: #bfdbfe; /* blue-200 */
+}
+/* For smooth transitions */
+body {
+  transition: background-color 0.3s ease;
+}
+
+/* If you want to apply this blue to all pages */
+.main-layout {
+  background-color: #1A237E;
+  min-height: 100vh;
+}/* Custom styles for better visual separation */
+.testimonial-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.testimonial-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+#testimonials-header {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.testimonial-author {
+  background: linear-gradient(90deg, rgba(26,35,126,0.3) 0%, rgba(26,35,126,0.8) 100%);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-bottom: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
