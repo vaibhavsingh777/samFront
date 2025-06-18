@@ -1,5 +1,5 @@
 import React from "react";
-//inline styles for cities
+
 const cities = [
   {
     name: "Mumbai",
@@ -16,7 +16,7 @@ const cities = [
   },
   {
     name: "Delhi",
-    venue: "Innov8, Connaught Place, Gurgaon",
+    venue: "Innov8, Connaught Place",
     date: "27th July, 2024",
     time: "9:30 AM - 12:30 PM",
   },
@@ -51,11 +51,10 @@ const bannerStyle: React.CSSProperties = {
   fontFamily: "'Poppins', sans-serif",
   textTransform: "uppercase",
   display: "flex",
-  alignItems: "flex-start",
+  alignItems: "center",
   gap: "2vw",
   transition: "transform 0.2s, box-shadow 0.2s, background 0.2s, opacity 0.2s",
   boxSizing: "border-box",
-  flexWrap: "wrap", // allow wrapping on small screens
 };
 
 const bannerHoverStyle: React.CSSProperties = {
@@ -79,25 +78,25 @@ const cityNameStyle: React.CSSProperties = {
 const detailsStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  gap: "2vw",
+  gap: "2.5vw",
   flex: 1,
   justifyContent: "flex-start",
-  alignItems: "flex-start",
+  alignItems: "center",
   fontSize: "1.15rem",
   fontWeight: 400,
   color: "#fff",
   textTransform: "none",
-  flexWrap: "wrap", // allow wrapping for detail columns if needed
+  minWidth: 0,
 };
 
 const detailItemStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  gap: "0.2rem",
-  flex: 1,
+  gap: "0.1rem",
   minWidth: "180px",
-  maxWidth: "100%",
-  wordBreak: "break-word",
+  maxWidth: "350px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
 
 const detailLabelStyle: React.CSSProperties = {
@@ -113,67 +112,10 @@ const detailValueStyle: React.CSSProperties = {
   fontSize: "1.12rem",
   color: "#fff",
   textTransform: "none",
-  wordBreak: "break-word",
-  whiteSpace: "normal",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
 };
-
-const AboutSAM: React.FC = () => (
-  <section
-    style={{
-      background: "#1A237E",
-      padding: "3rem 1rem",
-      width: "100%",
-      boxSizing: "border-box",
-    }}
-  >
-    <div
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        textAlign: "center",
-        fontFamily: "'Poppins', sans-serif",
-      }}
-    >
-      <h1
-        style={{
-          color: "#FFC107",
-          fontWeight: 800,
-          fontSize: "3rem",
-          marginBottom: "1.5rem",
-          letterSpacing: "1.5px",
-          marginTop: "-1rem",
-        }}
-      >
-        ABOUT SAM
-      </h1>
-
-      <p
-        style={{
-          color: "#F5F5F5",
-          fontSize: "1.2rem",
-          lineHeight: 1.8,
-          textAlign: "left",
-        }}
-      >
-        The Student Alumni Meet is a welcome event for IITB students to interact
-        with alumni and gain valuable insights about life after IIT Bombay.
-        Through shared experiences, students will discover both the realities of
-        life beyond IIT and the current campus culture.
-        <br />
-        <br />
-        <b>Structure:</b>
-        <br />
-        1. Speech by an alumnus (giving a broader perspective on life after IIT)
-        <br />
-        2. Presentation by the Chapter (briefing about activities done round the
-        year)
-        <br />
-        3. Common Q&amp;A session where doubts of students and their parents
-        will be addressed.
-      </p>
-    </div>
-  </section>
-);
 
 const CitiesBanners: React.FC = () => {
   const [hovered, setHovered] = React.useState<number | null>(null);
@@ -194,7 +136,9 @@ const CitiesBanners: React.FC = () => {
           <div style={detailsStyle}>
             <div style={detailItemStyle}>
               <span style={detailLabelStyle}>Venue</span>
-              <span style={detailValueStyle}>{city.venue}</span>
+              <span style={detailValueStyle} title={city.venue}>
+                {city.venue}
+              </span>
             </div>
             <div style={detailItemStyle}>
               <span style={detailLabelStyle}>Date</span>
@@ -211,13 +155,4 @@ const CitiesBanners: React.FC = () => {
   );
 };
 
-const HomePage: React.FC = () => (
-  <div>
-    {/* About SAM Section */}
-    <AboutSAM />
-    {/* City Banners Section */}
-    <CitiesBanners />
-  </div>
-);
-
-export default HomePage;
+export default CitiesBanners;

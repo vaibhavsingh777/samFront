@@ -4,17 +4,18 @@ import Marquee from "react-fast-marquee";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const marqueeText = "Connecting students and alumni across generations...";
+
 const Footer = () => (
   <footer
     style={{
       backgroundColor: "#fff", // Footer is full white
       color: "#1A237E", // All text is deep blue
       textAlign: "center",
-      padding: "0 0 0 0",
+      padding: "0", // No extra padding
       position: "relative",
       bottom: 0,
       width: "100%",
-      marginTop: "2rem",
+      // marginTop removed to avoid gap above footer
       fontWeight: "500",
       fontSize: "clamp(1rem, 2vw, 1.2rem)",
       boxSizing: "border-box",
@@ -127,7 +128,6 @@ const Footer = () => (
             fontWeight: 700,
             fontSize: "1.1em",
             padding: "0.25rem 0",
-            fontFamily: "HeadFont, sans-serif",
           }}
         >
           {marqueeText} &nbsp; {marqueeText}
@@ -158,7 +158,6 @@ const Footer = () => (
             fontWeight: 700,
             fontSize: "1.1em",
             padding: "0.25rem 0",
-            fontFamily: "HeadFont, sans-serif",
           }}
         >
           {marqueeText} &nbsp; {marqueeText}
