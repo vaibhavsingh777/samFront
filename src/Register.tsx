@@ -38,8 +38,8 @@ export default function Register() {
 
   const [form, setForm] = useState({
     JEE Advanced 2025 Rank: '',
-    iitOther: '',
-    questions: '',
+    
+    Any questions you would like to ask?: '',
     file: null
   });
 
@@ -59,8 +59,41 @@ export default function Register() {
 <label for="rank">Category Rank:</label>
 <input type="number" id="rank" name="rank" placeholder="Enter your category rank" required />
 
+  <label for="screenshot">Upload a screenshot of your current JoSAA Choice Filling*
+(Upload the most recent JoSAA round's screenshot or Seat Allotment letter)
+</label>
+  <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
 
-  
+
+    <label for="otherIIT">If not joining IIT Bombay, then which IIT will you be joining?</label>
+<select id="otherIIT" name="otherIIT">
+  <option value="">-- Select IIT --</option>
+  <option value="IIT Delhi">IIT Delhi</option>
+  <option value="IIT Kanpur">IIT Kanpur</option>
+  <option value="IIT Madras">IIT Madras</option>
+  <option value="IIT Kharagpur">IIT Kharagpur</option>
+  <option value="IIT Roorkee">IIT Roorkee</option>
+  <option value="IIT Guwahati">IIT Guwahati</option>
+  <option value="IIT Hyderabad">IIT Hyderabad</option>
+  <option value="IIT BHU">IIT (BHU) Varanasi</option>
+  <option value="IIT Dhanbad">IIT Dhanbad (ISM)</option>
+  <option value="IIT Indore">IIT Indore</option>
+  <option value="IIT Mandi">IIT Mandi</option>
+  <option value="IIT Ropar">IIT Ropar</option>
+  <option value="IIT Gandhinagar">IIT Gandhinagar</option>
+  <option value="IIT Patna">IIT Patna</option>
+  <option value="IIT Bhubaneswar">IIT Bhubaneswar</option>
+  <option value="IIT Jodhpur">IIT Jodhpur</option>
+  <option value="IIT Tirupati">IIT Tirupati</option>
+  <option value="IIT Palakkad">IIT Palakkad</option>
+  <option value="IIT Goa">IIT Goa</option>
+  <option value="IIT Jammu">IIT Jammu</option>
+  <option value="IIT Dharwad">IIT Dharwad</option>
+</select>
+
+
+
+    
 
   const [submitted, setSubmitted] = useState(false);
 
