@@ -134,42 +134,16 @@ const AboutSAM: React.FC = () => (
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <h1
-        style={{
-          color: "#FFC107",
-          fontWeight: 800,
-          fontSize: "3rem",
-          marginBottom: "1.5rem",
-          letterSpacing: "1.5px",
-          marginTop: "-1rem",
-        }}
-      >
-        ABOUT SAM
-      </h1>
-
       <p
         style={{
           color: "#F5F5F5",
-          fontSize: "1.2rem",
+          fontSize: "2.4rem", // increased size
           lineHeight: 1.8,
-          textAlign: "left",
+          textAlign: "center",
+          fontFamily: "'Dancing Script', cursive", // elegant cursive font
         }}
       >
-        The Student Alumni Meet is a welcome event for IITB students to interact
-        with alumni and gain valuable insights about life after IIT Bombay.
-        Through shared experiences, students will discover both the realities of
-        life beyond IIT and the current campus culture.
-        <br />
-        <br />
-        <b>Structure:</b>
-        <br />
-        1. Speech by an alumnus (giving a broader perspective on life after IIT)
-        <br />
-        2. Presentation by the Chapter (briefing about activities done round the
-        year)
-        <br />
-        3. Common Q&amp;A session where doubts of students and their parents
-        will be addressed.
+        Not just a meet — a journey from campus corridors to life beyond
       </p>
     </div>
   </section>

@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
   return (
     <nav
       style={{
-        backgroundColor: "#1A237E",
+        backgroundColor: "#191970",
         padding: "1rem 4vw",
         display: "flex",
         justifyContent: "space-between",
