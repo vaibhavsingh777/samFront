@@ -18,15 +18,48 @@ export default function Register() {
 
   const [form, setForm] = useState({
     
-    name: '',
-    phone: '',
-    email: '',
-    city: '',
-    rank: '',
+    Full Name: '',
+    Phone No.: '',
+    Email ID: '',
+  });
+  <label>Which city will you attend SAM in?<br />
+  <select
+    id="city" name="city"
+    required
+  >
+    <option value="">--Select--</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Pune">Pune</option>
+    <option value="Jaipur">Jaipur</option>
+    <option value="Indore">Indore</option>
+    <option value="Delhi">Delhi</option>
+  </select>
+</label>
+
+  const [form, setForm] = useState({
+    JEE Advanced 2025 Rank: '',
     iitOther: '',
     questions: '',
     file: null
   });
+
+<label for="category">Category:</label>
+<select id="category" name="category" required>
+  <option value="">-- Select Category --</option>
+  <option value="GEN">GEN</option>
+  <option value="GEN-EWS">GEN-EWS</option>
+  <option value="OBC-NCL">OBC-NCL</option>
+  <option value="SC">SC</option>
+  <option value="ST">ST</option>
+  <option value="PwD">PwD</option>
+</select>
+
+<br><br>
+
+<label for="rank">Category Rank:</label>
+<input type="number" id="rank" name="rank" placeholder="Enter your category rank" required />
+
+
   
 
   const [submitted, setSubmitted] = useState(false);
