@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
       >
         <NavLink to="/homepage">Home</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NavLink to="/venues">Venues</NavLink>
+        <NavLink to="/venues">On Map</NavLink>
         <NavLink to="/testimonials">Testimonials</NavLink>
         <NavLink to="/faqs">FAQs</NavLink>
         <NavLink to="/contacts">Contact</NavLink>

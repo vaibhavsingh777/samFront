@@ -1,27 +1,22 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-
-// Fix for marker icons in Leaflet
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
+// Custom small icon
+const smallIcon = new L.Icon({
   iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
   shadowUrl: markerShadow,
+  iconSize: [18, 28], // smaller size
+  iconAnchor: [9, 28],
+  popupAnchor: [0, -28],
+  shadowSize: [28, 28],
 });
 
-// Type the position properly
-interface Location {
-  name: string;
-  position: [number, number];
-  link: string;
-}
-
-const locations: Location[] = [
+const locations = [
   {
     name: "Mumbai",
     position: [19.076, 72.8777],
@@ -49,33 +44,34 @@ const locations: Location[] = [
   },
 ];
 
-const IndiaMap = () => {
-  return (
-    <MapContainer
-      center={[22.9734, 78.6569]}
-      zoom={5}
-      style={{
-        height: "500px",
-        width: "100%",
-        margin: "2rem 0",
-        borderRadius: "12px",
-      }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {locations.map((loc) => (
-        <Marker key={loc.name} position={loc.position}>
-          <Popup>
-            <a href={loc.link} target="_blank" rel="noopener noreferrer">
-              {loc.name}
-            </a>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
-  );
-};
+const IndiaMap = () => (
+  <MapContainer
+    center={[22.9734, 78.6569]}
+    zoom={4} // Reduced zoom
+    style={{
+      height: "140px",
+      width: "100%",
+      maxWidth: "170px",
+      minWidth: "120px",
+      borderRadius: "10px",
+      margin: "0 auto",
+      boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+    }}
+  >
+    <TileLayer
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    />
+    {locations.map((loc) => (
+      <Marker key={loc.name} position={loc.position} icon={smallIcon}>
+        <Popup>
+          <a href={loc.link} target="_blank" rel="noopener noreferrer">
+            {loc.name}
+          </a>
+        </Popup>
+      </Marker>
+    ))}
+  </MapContainer>
+);
 
 export default IndiaMap;
