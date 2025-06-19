@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Contact.css'; // <-- Importing external CSS
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,80 +18,57 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert(`Thank you for messaging us  ${formData.name}! We'll contact you soon.`);
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+    alert(`Thank you ${formData.name}! We'll contact you soon.`);
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
-    <div className="page contact-page">
-      <div className="page-header">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you</p>
-      </div>
-      
-      <div className="contact-container">
+    <div className="contact-container">
+      <div className="contact-content">
+        {/* Form Section */}
         <form onSubmit={handleSubmit} className="contact-form">
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={5}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Send Message
-          </button>
+          <h1>Contact Us</h1>
+          <p>We’d love to hear from you! Reach out with your questions or feedback.</p>
+
+          <label>Your Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="John Doe"
+            required
+          />
+
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="john@example.com"
+            required
+          />
+
+          <label>Message</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Type your message here..."
+            rows={4}
+            required
+          ></textarea>
+
+          <button type="submit">Send Message</button>
         </form>
 
+        {/* Contact Info */}
         <div className="contact-info">
-          <h2>Our Information</h2>
-          <div className="info-item">
-            <h3>Email</h3>
-            <p>hello@bestever.com</p>
-          </div>
-          <div className="info-item">
-            <h3>Phone</h3>
-            <p>+1 (555) 123-4567</p>
-          </div>
-          <div className="info-item">
-            <h3>Address</h3>
-            <p>123 Design Street<br />Creative City, CA 90210</p>
-          </div>
-          <div className="info-item">
-            <h3>Hours</h3>
-            <p>Monday - Friday: 9am - 6pm<br />Saturday: 10am - 4pm</p>
-          </div>
+          <h2>Get in Touch</h2>
+          <div className="info-item">📧 hello@bestever.com</div>
+          <div className="info-item">📞 +1 (555) 123-4567</div>
+          <div className="info-item">📍 123 Design Street, Creative City</div>
         </div>
       </div>
     </div>
@@ -98,3 +76,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
