@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import HomePage from "./pages/homepage";
@@ -31,9 +31,7 @@ const App: React.FC = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<Navigate to="/homepage" replace />} />
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/venues" element={<IndiaMap />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </main>
 
