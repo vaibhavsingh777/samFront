@@ -1,5 +1,9 @@
 import React from "react";
-import mumImage from "../assets/mum.jpg";
+import mumbaiImage from "../assets/mum.jpg";
+import puneImage from "../assets/pune.png";
+import delhiImage from "../assets/delhi.png";
+import jaipurImage from "../assets/jaipur.png";
+import indoreImage from "../assets/indore.png";
 
 const cities = [
   {
@@ -41,6 +45,15 @@ const cities = [
   },
 ];
 
+// Map city names to their images
+const cityImages: { [key: string]: string } = {
+  Mumbai: mumbaiImage,
+  Pune: puneImage,
+  Delhi: delhiImage,
+  Jaipur: jaipurImage,
+  Indore: indoreImage,
+};
+
 const bannerStyle: React.CSSProperties = {
   width: "100vw",
   maxWidth: "100%",
@@ -63,6 +76,8 @@ const bannerStyle: React.CSSProperties = {
   transition: "transform 0.2s, box-shadow 0.2s",
   boxSizing: "border-box",
   flexWrap: "wrap",
+  position: "relative",
+  overflow: "hidden",
 };
 
 const bannerHoverStyle: React.CSSProperties = {
@@ -84,7 +99,7 @@ const cityNameStyle: React.CSSProperties = {
 const detailsStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  gap: "3vw", // Increased gap for clearer separation
+  gap: "3vw",
   flex: 1,
   justifyContent: "flex-start",
   alignItems: "center",
@@ -128,11 +143,11 @@ const CitiesBanners: React.FC = () => {
   return (
     <div style={{ width: "100vw", maxWidth: "100%", overflow: "hidden" }}>
       {cities.map((city, idx) => {
-        const isMumbai = city.name === "Mumbai";
+        const hasImage = cityImages[city.name] !== undefined;
 
-        const backgroundStyle = isMumbai
+        const backgroundStyle = hasImage
           ? {
-              backgroundImage: `url(${mumImage})`,
+              backgroundImage: `url(${cityImages[city.name]})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -142,7 +157,7 @@ const CitiesBanners: React.FC = () => {
             }
           : {};
 
-        const overlayStyle = isMumbai
+        const overlayStyle = hasImage
           ? {
               position: "absolute" as "absolute",
               top: 0,
@@ -162,14 +177,11 @@ const CitiesBanners: React.FC = () => {
               ...bannerStyle,
               ...backgroundStyle,
               ...(hovered === idx ? bannerHoverStyle : {}),
-              position: "relative",
-              color: "#FFFFFF",
-              overflow: "hidden",
             }}
             onMouseEnter={() => setHovered(idx)}
             onMouseLeave={() => setHovered(null)}
           >
-            {isMumbai && <div style={overlayStyle} />}
+            {hasImage && <div style={overlayStyle} />}
             <div style={{ position: "relative", zIndex: 2, width: "100%" }}>
               <span style={cityNameStyle}>{city.name}</span>
               <div style={detailsStyle}>
