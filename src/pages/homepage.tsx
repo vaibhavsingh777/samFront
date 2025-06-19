@@ -1,5 +1,6 @@
 import React from "react";
 import mumImage from "../assets/mum.jpg";
+import About from "../components/about";
 
 // Use venueLink for Google Maps links for each city
 const cities = [
@@ -244,7 +245,7 @@ const CitiesBanners: React.FC = () => {
 const HomePage: React.FC = () => (
   <div>
     {/* About SAM Section */}
-    <AboutSAM />
+    <About />
     {/* City Banners Section */}
     <CitiesBanners />
   </div>
