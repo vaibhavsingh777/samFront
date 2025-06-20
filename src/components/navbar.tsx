@@ -96,7 +96,6 @@ const Navbar: React.FC = () => {
         <NavLink to="/" scrollToId="faqs">
           FAQs
         </NavLink>
-        <NavLink to="/contacts">Contact</NavLink>
       </div>
     </nav>
   );

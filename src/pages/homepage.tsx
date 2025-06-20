@@ -3,6 +3,7 @@ import About from "../components/about";
 import CitiesBanners from "../components/citybanner";
 import Testimonials from "./testimonials";
 import FAQs from "./FAQs";
+
 const HomePage: React.FC = () => (
   <div>
     <div id="about">
@@ -17,6 +18,7 @@ const HomePage: React.FC = () => (
     <div id="faqs">
       <FAQs />
     </div>
+    <div id="contacts"></div>
   </div>
 );
 
