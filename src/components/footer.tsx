@@ -10,102 +10,6 @@ import {
   FaYoutube,
   FaFacebook,
 } from "react-icons/fa";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-// Fix for marker icons in Leaflet
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-});
-
-// Custom small icon for markers
-const smallIcon = new L.Icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [18, 28],
-  iconAnchor: [9, 28],
-  popupAnchor: [0, -28],
-  shadowSize: [28, 28],
-});
-
-const locations = [
-  {
-    name: "Mumbai",
-    position: [19.076, 72.8777],
-    link: "https://goo.gl/maps/YOUR_MUMBAI_LOCATION_LINK",
-  },
-  {
-    name: "Pune",
-    position: [18.5204, 73.8567],
-    link: "https://goo.gl/maps/YOUR_PUNE_LOCATION_LINK",
-  },
-  {
-    name: "Delhi",
-    position: [28.6139, 77.209],
-    link: "https://goo.gl/maps/YOUR_DELHI_LOCATION_LINK",
-  },
-  {
-    name: "Indore",
-    position: [22.7196, 75.8577],
-    link: "https://goo.gl/maps/YOUR_INDORE_LOCATION_LINK",
-  },
-  {
-    name: "Jaipur",
-    position: [26.9124, 75.7873],
-    link: "https://goo.gl/maps/YOUR_JAIPUR_LOCATION_LINK",
-  },
-];
-
-const IndiaMap = () => (
-  <div
-    style={{
-      flex: "0 0 150px",
-      minWidth: "100px",
-      maxWidth: "150px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <MapContainer
-      center={[22.9734, 78.6569]}
-      zoom={4}
-      style={{
-        height: "110px",
-        width: "100%",
-        maxWidth: "150px",
-        minWidth: "100px",
-        borderRadius: "10px",
-        margin: "0 auto",
-        boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
-      }}
-      scrollWheelZoom={false}
-      dragging={false}
-      doubleClickZoom={false}
-      zoomControl={false}
-      attributionControl={false}
-    >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {locations.map((loc) => (
-        <Marker key={loc.name} position={loc.position} icon={smallIcon}>
-          <Popup>
-            <a href={loc.link} target="_blank" rel="noopener noreferrer">
-              {loc.name}
-            </a>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
-  </div>
-);
 
 const marqueeText = "Connecting students and alumni across generations...";
 
@@ -128,7 +32,6 @@ const Footer = () => (
       display: "block",
     }}
   >
-    {/* Flex row: logo + contact + social links */}
     <div
       style={{
         display: "flex",
@@ -142,7 +45,7 @@ const Footer = () => (
         flexWrap: "wrap",
       }}
     >
-      {/* SARC white Logo on the left */}
+      {/* SARC Logo */}
       <div style={{ flex: "0 0 auto", marginTop: "0.35rem" }}>
         <img
           src={sarcLogo}
@@ -188,26 +91,32 @@ const Footer = () => (
 
       {/* Social Links Section */}
       <div
+        className="footer-social"
         style={{
           flex: "0 0 220px",
           display: "flex",
           flexDirection: "column",
           gap: "1rem",
           fontSize: "1.15rem",
-          textAlign: "left",
+          // REMOVE textAlign and alignItems here!
           justifyContent: "center",
           color: "#1A237E",
         }}
       >
-        <h2 style={{ margin: 0, fontSize: "1.2rem", fontWeight: "600" }}>
+        <h2
+          className="footer-social-heading"
+          style={{ margin: 0, fontSize: "1.2rem", fontWeight: "600" }}
+        >
           Get connected with us on social networks:
         </h2>
         <div
+          className="footer-social-icons"
           style={{
             display: "flex",
             flexDirection: "row",
             gap: "1rem",
             marginTop: "0.5rem",
+            // REMOVE justifyContent here!
           }}
         >
           <a
@@ -249,7 +158,6 @@ const Footer = () => (
         </div>
       </div>
     </div>
-
     {/* Marquees centered and full width, below the flex row */}
     <div style={{ width: "100%", marginTop: "0.5rem" }}>
       {/* Top Marquee */}
@@ -313,6 +221,23 @@ const Footer = () => (
         </Marquee>
       </div>
     </div>
+    {/* Responsive styles for mobile */}
+    <style>
+      {`
+        @media (max-width: 700px) {
+          .footer-social {
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .footer-social-icons {
+            justify-content: center !important;
+          }
+          .footer-social-heading {
+            text-align: center !important;
+          }
+        }
+      `}
+    </style>
   </footer>
 );
 

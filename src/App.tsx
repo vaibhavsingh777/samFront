@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import HomePage from "./pages/homepage";
-import IndiaMap from "./pages/venues"; // you can add routes later
+import ScrollToTopButton from "./components/ScrollToTopButton"; // Import your button
 
 const App: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const App: React.FC = () => {
         flexDirection: "column",
         minHeight: "100vh",
         fontFamily: "'Poppins', sans-serif",
-        backgroundColor: "#1A237E", // consistent background for full viewport
+        backgroundColor: "#1A237E",
         color: "#fff",
       }}
     >
@@ -28,6 +28,9 @@ const App: React.FC = () => {
           {/* <Route path="/venues" element={<IndiaMap />} /> */}
         </Routes>
       </main>
+
+      {/* ScrollToTopButton overlays content, always visible when needed */}
+      <ScrollToTopButton />
 
       {/* Footer stays at the bottom, never overlaps */}
       <Footer />

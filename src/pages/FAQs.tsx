@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaChevronRight, FaChevronDown, FaPlus, FaMinus } from "react-icons/fa";
 import ctm1 from "../assets/img.jpeg";
 import ctm2 from "../assets/img.jpeg";
+import back3 from "../assets/back3.png";
 
 interface FAQItem {
   question: string;
@@ -17,29 +18,33 @@ interface CTMCardProps {
 const CTMCard: React.FC<CTMCardProps> = ({ img, name, phone }) => (
   <div
     style={{
-      background: "linear-gradient(135deg, #0D1B5A, #1A237E)",
+      background: "rgba(255,255,255,0.13)",
+      backdropFilter: "blur(10px) saturate(180%)",
+      WebkitBackdropFilter: "blur(10px) saturate(180%)",
+      border: "1.5px solid rgba(255,255,255,0.28)",
       borderRadius: "18px",
       padding: "2rem 1.5rem",
       color: "#fff",
       textAlign: "center",
-      boxShadow: "0 6px 22px rgba(0,0,0,0.4)",
-      border: "2px solid #FFD700",
-      transition: "transform 0.4s ease, box-shadow 0.4s ease",
+      boxShadow: "0 6px 22px rgba(0,0,0,0.12)",
+      transition: "transform 0.4s, box-shadow 0.4s",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      position: "relative",
+      overflow: "hidden",
     }}
     onMouseEnter={(e) => {
       (e.currentTarget as HTMLDivElement).style.transform =
         "translateY(-8px) scale(1.03)";
       (e.currentTarget as HTMLDivElement).style.boxShadow =
-        "0 12px 30px rgba(0,0,0,0.5)";
+        "0 12px 30px rgba(0,0,0,0.18)";
     }}
     onMouseLeave={(e) => {
       (e.currentTarget as HTMLDivElement).style.transform =
         "translateY(0) scale(1)";
       (e.currentTarget as HTMLDivElement).style.boxShadow =
-        "0 6px 22px rgba(0,0,0,0.4)";
+        "0 6px 22px rgba(0,0,0,0.12)";
     }}
   >
     <img
@@ -53,6 +58,7 @@ const CTMCard: React.FC<CTMCardProps> = ({ img, name, phone }) => (
         border: "4px solid #FFD700",
         marginBottom: "1rem",
         boxShadow: "0 0 12px rgba(255,215,0,0.4)",
+        background: "#fff",
       }}
     />
     <h3 style={{ margin: "0 0 0.5rem", fontSize: "1.5rem", color: "#FFD700" }}>
@@ -72,14 +78,20 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
   return (
     <div
       style={{
-        background: "rgba(0,0,0,0.5)",
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        borderRadius: "12px",
+        background: "rgba(255,255,255,0.13)",
+        backdropFilter: "blur(10px) saturate(180%)",
+        WebkitBackdropFilter: "blur(10px) saturate(180%)",
+        border: "1.5px solid rgba(255,255,255,0.28)",
+        borderRadius: "14px",
         marginBottom: "1rem",
         padding: "1rem 1.5rem",
-        transition: "all 0.3s ease",
+        transition: "all 0.3s",
         cursor: "pointer",
-        boxShadow: isOpen ? "0 0 10px rgba(255,255,255,0.3)" : "none",
+        boxShadow: isOpen
+          ? "0 0 10px rgba(255,255,255,0.18)"
+          : "0 2px 8px rgba(26,35,126,0.09)",
+        position: "relative",
+        overflow: "hidden",
       }}
       onClick={() => setIsOpen((prev) => !prev)}
       aria-expanded={isOpen}
@@ -112,10 +124,10 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
         style={{
           maxHeight: isOpen ? "500px" : "0px",
           overflow: "hidden",
-          transition: "max-height 0.4s ease, opacity 0.4s ease",
+          transition: "max-height 0.4s, opacity 0.4s",
           opacity: isOpen ? 1 : 0,
           marginTop: isOpen ? "0.8rem" : "0",
-          color: "rgba(240, 240, 240, 0.85)",
+          color: "rgba(240, 240, 240, 0.92)",
           lineHeight: 1.8,
           fontSize: "1rem",
         }}
@@ -198,14 +210,48 @@ const FAQs: React.FC = () => {
     <section
       style={{
         width: "100vw",
+        minHeight: "100vh",
         padding: "4rem 1rem 5rem 1rem",
         color: "#fff",
         fontFamily: "'Poppins', sans-serif",
         boxSizing: "border-box",
         backgroundColor: "#1A237E",
+        backgroundImage: `url(${back3})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: "1024px", margin: "0 auto" }}>
+      {/* Blurred background overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `url(${back3}) center/cover no-repeat`,
+          filter: "blur(6px) brightness(0.7)",
+          zIndex: 0,
+        }}
+      />
+      {/* Frosted glass main overlay */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: "1024px",
+          margin: "0 auto",
+          padding: "2.5rem 2rem",
+          background: "rgba(255,255,255,0.12)",
+          backdropFilter: "blur(12px) saturate(180%)",
+          WebkitBackdropFilter: "blur(12px) saturate(180%)",
+          border: "1.5px solid rgba(255,255,255,0.22)",
+          borderRadius: "18px",
+          boxShadow: "0 6px 32px rgba(0,0,0,0.15)",
+          overflow: "hidden",
+        }}
+        className="glass"
+      >
         <h2
           style={{
             fontSize: "3rem",
@@ -230,13 +276,15 @@ const FAQs: React.FC = () => {
             style={{
               padding: "0.8rem 1.6rem",
               borderRadius: "8px",
-              background: "#FFD700",
-              color: "#1A237E",
+              background: "#FFD700", // gold
+              color: "#1A237E", // solid blue text
               fontWeight: 600,
               fontSize: "1rem",
               border: "none",
               cursor: "pointer",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+              boxShadow: "none",
+              position: "relative",
+              zIndex: 2,
               transition: "transform 0.3s ease",
             }}
             onMouseOver={(e) =>
@@ -248,7 +296,6 @@ const FAQs: React.FC = () => {
             Still have questions?
           </button>
         </div>
-
         {/* Event Heads */}
         <div
           id="event-heads-section"
@@ -284,6 +331,24 @@ const FAQs: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Apple "liquid glass" shine pseudo-element */}
+      <style>{`
+        .glass::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: rgba(255,255,255,0.09);
+          border-radius: 18px;
+          backdrop-filter: blur(2px);
+          box-shadow:
+            inset -10px -8px 0px -11px rgba(255,255,255,0.7),
+            inset 0px -9px 0px -8px rgba(255,255,255,0.5);
+          opacity: 0.55;
+          z-index: 0;
+          filter: blur(1px) brightness(110%);
+          pointer-events: none;
+        }
+      `}</style>
     </section>
   );
 };
