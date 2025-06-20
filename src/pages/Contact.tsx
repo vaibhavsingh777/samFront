@@ -64,16 +64,11 @@ const Contact = () => {
         </form>
 
         {/* Contact Info */}
-        <div className="contact-info">
-          <h2>Get in Touch</h2>
-          <div className="info-item">📧 hello@bestever.com</div>
-          <div className="info-item">📞 +1 (555) 123-4567</div>
-          <div className="info-item">📍 123 Design Street, Creative City</div>
+       
         </div>
       </div>
-    </div>
+   
   );
 };
 
 export default Contact;
-
