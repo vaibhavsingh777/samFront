@@ -1,14 +1,34 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface NavLinkProps {
   to: string;
   children: React.ReactNode;
+  scrollToId?: string;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ to, children, scrollToId }) => {
   const location = useLocation();
-  const isActive = location.pathname === to;
+  const navigate = useNavigate();
+  const isActive =
+    location.pathname === to || (location.pathname === "/" && to === "/");
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (scrollToId) {
+      e.preventDefault();
+      if (location.pathname !== "/" && location.pathname !== "/homepage") {
+        // Go to homepage first, then scroll after navigation
+        navigate("/", { replace: false });
+        setTimeout(() => {
+          const el = document.getElementById(scrollToId);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100); // wait for navigation
+      } else {
+        // Already on homepage
+        const el = document.getElementById(scrollToId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <Link
@@ -27,6 +47,7 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children }) => {
         cursor: "pointer",
         whiteSpace: "nowrap",
       }}
+      onClick={handleClick}
       onMouseOver={(e) => {
         (e.currentTarget as HTMLElement).style.background = isActive
           ? "#FFFFFF"
@@ -52,8 +73,8 @@ const Navbar: React.FC = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        flexWrap: "wrap", // enables responsiveness
-        gap: "0.8rem", // spacing for wrapped elements
+        flexWrap: "wrap",
+        gap: "0.8rem",
         position: "relative",
         zIndex: 10,
       }}
@@ -77,8 +98,12 @@ const Navbar: React.FC = () => {
           gap: "0.5rem",
         }}
       >
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/cities">Cities</NavLink>
+        <NavLink to="/" scrollToId="about">
+          About
+        </NavLink>
+        <NavLink to="/" scrollToId="cities">
+          Cities
+        </NavLink>
         <NavLink to="/testimonials">Testimonials</NavLink>
         <NavLink to="/faqs">FAQs</NavLink>
         <NavLink to="/contacts">Contact</NavLink>
