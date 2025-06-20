@@ -127,6 +127,9 @@ const Testimonials: React.FC = () => (
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      border: "2px solid white",
+      boxShadow:
+        "0 0 20px 4px rgba(255,255,255,0.6), 0 0 40px 10px rgba(255,255,255,0.4) inset",
     }}
   >
     {/* Blurred Background */}
@@ -140,7 +143,7 @@ const Testimonials: React.FC = () => (
         backgroundRepeat: "no-repeat",
         filter: "blur(3px) brightness(0.7)",
         opacity: 1,
-        zIndex: 0,
+        zIndex: 1,
       }}
     />
 

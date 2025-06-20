@@ -9,21 +9,17 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ to, children, scrollToId }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isActive =
-    location.pathname === to || (location.pathname === "/" && to === "/");
 
   const handleClick = (e: React.MouseEvent) => {
     if (scrollToId) {
       e.preventDefault();
       if (location.pathname !== "/" && location.pathname !== "/homepage") {
-        // Go to homepage first, then scroll after navigation
         navigate("/", { replace: false });
         setTimeout(() => {
           const el = document.getElementById(scrollToId);
           if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100); // wait for navigation
+        }, 100);
       } else {
-        // Already on homepage
         const el = document.getElementById(scrollToId);
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }
@@ -33,30 +29,20 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children, scrollToId }) => {
   return (
     <Link
       to={to}
+      onClick={handleClick}
       style={{
-        color: isActive ? "#1A237E" : "#FFFFFF",
-        background: isActive ? "#FFFFFF" : "transparent",
-        padding: "0.5rem 1rem",
-        borderRadius: "9px",
+        color: "#FFFFFF",
         textDecoration: "none",
         fontWeight: 600,
-        letterSpacing: "0.3px",
-        fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
-        boxShadow: isActive ? "0 2px 8px rgba(0,0,0,0.1)" : "none",
-        transition: "all 0.2s ease",
+        fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
         cursor: "pointer",
-        whiteSpace: "nowrap",
+        transition: "all 0.2s ease",
       }}
-      onClick={handleClick}
       onMouseOver={(e) => {
-        (e.currentTarget as HTMLElement).style.background = isActive
-          ? "#FFFFFF"
-          : "rgba(255, 255, 255, 0.15)";
+        (e.currentTarget as HTMLElement).style.textDecoration = "underline";
       }}
       onMouseOut={(e) => {
-        (e.currentTarget as HTMLElement).style.background = isActive
-          ? "#FFFFFF"
-          : "transparent";
+        (e.currentTarget as HTMLElement).style.textDecoration = "none";
       }}
     >
       {children}
@@ -69,7 +55,7 @@ const Navbar: React.FC = () => {
     <nav
       style={{
         backgroundColor: "#191970",
-        padding: "1rem 4vw",
+        padding: "0.8rem 4vw",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -95,7 +81,7 @@ const Navbar: React.FC = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "0.5rem",
+          gap: "1rem",
         }}
       >
         <NavLink to="/" scrollToId="about">
@@ -104,8 +90,12 @@ const Navbar: React.FC = () => {
         <NavLink to="/" scrollToId="cities">
           Cities
         </NavLink>
-        <NavLink to="/testimonials">Testimonials</NavLink>
-        <NavLink to="/faqs">FAQs</NavLink>
+        <NavLink to="/" scrollToId="testimonials">
+          Testimonials
+        </NavLink>
+        <NavLink to="/" scrollToId="faqs">
+          FAQs
+        </NavLink>
         <NavLink to="/contacts">Contact</NavLink>
       </div>
     </nav>
