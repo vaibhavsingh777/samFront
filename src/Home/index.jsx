@@ -3,6 +3,7 @@ import ContactSection from "./components/ContactSection";
 
 const Home = () => {
   return (
+    <Register />
     <div className="bg-gradient-to-b from-blue-50 to-white">
       <Hero />
       <div className="max-w-7xl mx-auto px-4 py-16">
