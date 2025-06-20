@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import HomePage from "./pages/homepage";
 import IndiaMap from "./pages/venues";
+import Contact from "./pages/contacts";
 
 // import About from "./pages/about";
 // import Contact from "./pages/contacts";
@@ -32,6 +33,7 @@ const App: React.FC = () => {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/contacts" element={<Contact />} />
         </Routes>
       </main>
 

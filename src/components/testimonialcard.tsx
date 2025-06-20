@@ -13,17 +13,18 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => (
   <div
     style={{
-      background: "linear-gradient(145deg, #0D1B5A, #1A237E)", // subtle gradient for depth
+      background: "linear-gradient(145deg, #0D1B5A, #1A237E)",
       borderRadius: "20px",
-      boxShadow: "0 4px 24px rgba(0,0,0,0.25)", // more contrast
-      padding: "2rem 1.5rem",
-      maxWidth: 360,
+      boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+      padding: "1.5rem 1.2rem",
+      width: "100%",
+      height: "100%",
       color: "#fff",
       textAlign: "center",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      margin: "1rem auto",
+      justifyContent: "space-between",
       border: "2px solid #FFD700",
       position: "relative",
       transition: "transform 0.3s ease, box-shadow 0.3s ease",
@@ -39,40 +40,37 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         "0 4px 24px rgba(0,0,0,0.25)";
     }}
   >
-    {/* Profile Picture */}
     <img
       src={pfp}
       alt={name}
       style={{
-        width: 95,
-        height: 95,
+        width: 85,
+        height: 85,
         objectFit: "cover",
         borderRadius: "50%",
         border: "3px solid #FFD700",
-        marginBottom: "1rem",
-        boxShadow: "0 0 15px rgba(255, 215, 0, 0.5)", // glowing gold ring
+        marginBottom: "0.9rem",
+        boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)",
         background: "#fff",
       }}
     />
-    {/* Name */}
     <div
       style={{
-        fontWeight: 800,
-        fontSize: "1.3rem",
+        fontWeight: 700,
+        fontSize: "1.1rem",
         color: "#FFD700",
-        marginBottom: "0.6rem",
-        letterSpacing: "0.6px",
+        marginBottom: "0.4rem",
+        letterSpacing: "0.5px",
       }}
     >
       {name}
     </div>
-    {/* Testimonial */}
     <div
       style={{
-        fontSize: "1.1rem",
+        fontSize: "0.95rem",
         color: "#EAEAEA",
-        opacity: 0.92,
-        lineHeight: 1.6,
+        opacity: 0.9,
+        lineHeight: 1.5,
         fontStyle: "italic",
       }}
     >
