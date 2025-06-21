@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import HomePage from "./pages/homepage";
 import ScrollToTopButton from "./components/ScrollToTopButton"; // Import your button
+import Register from "./pages/register";
 
 const App: React.FC = () => {
   return (
@@ -24,7 +25,7 @@ const App: React.FC = () => {
       <main style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* Example: add more routes */}
+          <Route path="/register" element={<Register />} />
           {/* <Route path="/venues" element={<IndiaMap />} /> */}
         </Routes>
       </main>
