@@ -7,14 +7,15 @@ import PastEvents from './pages/PastEvents';
 import FAQs from './pages/FAQs';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Memories from './pages/memories'; // Importing the Memories component
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="flex flex-col min-h-screen bg-[#1A237E]">
         <Navbar />
-        <main>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/testimonials" element={<Testimonials />} />
@@ -22,6 +23,7 @@ function App() {
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/memories" element={<Memories />} /> {/* Added Memories route */}
           </Routes>
         </main>
         <Footer />
@@ -31,4 +33,3 @@ function App() {
 }
 
 export default App;
-
