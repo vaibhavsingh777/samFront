@@ -36,7 +36,7 @@ const Memories = () => {
       setTimeout(() => {
         setCurrentIndex(prev => (prev + 1) % memories.length);
         setIsTransitioning(false);
-      }, 1000); // Matches transition duration
+      }, 5000); // Matches transition duration
     }, 2000); // Change every 5 seconds
     
     return () => clearInterval(interval);
@@ -54,40 +54,28 @@ const Memories = () => {
 
         {/* Crossfade Slider Container */}
         <div className="relative h-[70vh] max-h-[800px] rounded-2xl overflow-hidden shadow-2xl">
-          {/* Active Slide */}
-          <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out">
-            <img
-              src={memories[currentIndex].image}
-              alt={memories[currentIndex].title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-end p-8 md:p-12">
-              <div className="max-w-3xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-2">
-                  {memories[currentIndex].title}
-                </h2>
-                <p className="text-lg md:text-xl text-gray-200 mb-4">
-                  {memories[currentIndex].description}
-                </p>
-                <p className="text-blue-300 font-medium">
-                  {memories[currentIndex].date}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Next Slide (preloading during transition) */}
-          {isTransitioning && (
-            <div className="absolute inset-0 animate-fadeIn">
-              <img
-                src={memories[(currentIndex + 1) % memories.length].image}
-                alt={memories[(currentIndex + 1) % memories.length].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-            </div>
-          )}
+  {memories.map((memory, index) => (
+    <div
+      key={memory.id}
+      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+        index === currentIndex ? 'opacity-100 z-20' : 'opacity-0 z-10'
+      }`}
+    >
+      <img
+        src={memory.image}
+        alt={memory.title}
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent flex items-end p-8 md:p-12">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">{memory.title}</h2>
+          <p className="text-lg md:text-xl text-gray-200 mb-4">{memory.description}</p>
+          <p className="text-blue-300 font-medium">{memory.date}</p>
         </div>
+      </div>
+    </div>
+  ))}
+</div>
 
         {/* Back to Top Button */}
         <div className="text-center mt-16">
