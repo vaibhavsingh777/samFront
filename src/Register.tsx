@@ -1,6 +1,40 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
 
+const inputStyle = {
+  width: '100%',
+  padding: '10px',
+  borderRadius: '10px',
+  border: '1px solid #ccc',
+  marginBottom: '20px',
+  fontSize: '1rem',
+  boxSizing: 'border-box' as const
+};
+
+const labelStyle = {
+  display: 'block',
+  marginBottom: '6px',
+  marginTop: '10px',
+  color: '#444',
+  fontWeight: 'bold',
+  fontSize: '15px',
+};
+
+const buttonStyle = {
+  backgroundColor: '#007bff',
+  color: 'white',
+  padding: '12px',
+  border: 'none',
+  borderRadius: '10px',
+  fontSize: '1rem',
+  cursor: 'pointer',
+  width: '100%',
+  marginTop: '10px'
+};
+
+
+
+
 export default function Register() {
   const [form, setForm] = useState({
     status: '',
@@ -52,25 +86,43 @@ export default function Register() {
     for (const key in form) {
       formData.append(key, form[key as keyof typeof form] || '');
     }
-
+    if (form.file) {
+  formData.append('file', form.file);
+}
     try {
-      const res = await axios.post('http://localhost:8000/api/register/', formData);
+      const res = await axios.post('http://127.0.0.1:8000/api/register/', formData);
       console.log('Submitted form:', form);
       console.log('Server response:', res.data);
       alert('Registration successful!');
       setSubmitted(true);
-    } catch (err) {
-      console.error('API error:', err);
-      alert('Registration failed. Please try again.');
-    }
+    }  catch (err: any) {
+  if (err.response) {
+    console.error("❌ Response error:", err.response.status, err.response.data);
+    alert(`Backend Error ${err.response.status}: ${JSON.stringify(err.response.data)}`);
+  } else if (err.request) {
+    console.error("❌ No response received:", err.request);
+    alert("No response from server. Is backend running?");
+  } else {
+    console.error("❌ Setup error:", err.message);
+    alert("Form error: " + err.message);
+  }
+}
+
+
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', fontFamily: 'Arial' }}>
-      <h2>SAM 2024 Registration</h2>
+    <div style={{ padding: '30px',
+    maxWidth: '600px',
+    margin: '50px auto',
+    fontFamily: 'Segoe UI, sans-serif',
+    backgroundColor: 'black'
+    borderRadius: '20px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '25px', color: '#333' }}>SAM 2024 Registration</h2>
       <form onSubmit={handleSubmit}>
-        <label>I am*<br />
-          <select name="status" value={form.status} onChange={handleChange} required>
+        <label style={labelStyle}>I am*<br />
+          <select name="status" value={form.status} onChange={handleChange} required style={inputStyle}>
             <option value="">--Select--</option>
             <option value="Joining IIT Bombay this year">Joining IIT Bombay this year</option>
             <option value="Joining some other IIT this year">Joining some other IIT this year</option>
@@ -79,15 +131,15 @@ export default function Register() {
         </label><br /><br />
 
         <label>Full Name*<br />
-          <input type="text" name="name" value={form.name} onChange={handleChange} required />
+          <input type="text" name="name" value={form.name} onChange={handleChange} required style={inputStyle} />
         </label><br /><br />
 
         <label>Phone Number (preferably WhatsApp)*<br />
-          <input type="tel" name="phone" value={form.phone} onChange={handleChange} required />
+          <input type="tel" name="phone" value={form.phone} onChange={handleChange} required style={inputStyle}/>
         </label><br /><br />
 
         <label>Email ID*<br />
-          <input type="email" name="email" value={form.email} onChange={handleChange} required />
+          <input type="email" name="email" value={form.email} onChange={handleChange} required style={inputStyle}/>
         </label><br /><br />
 
         <label>Which city will you attend SAM in?<br />
@@ -102,7 +154,7 @@ export default function Register() {
         </label><br /><br />
 
         <label>JEE Advanced 2024 Rank*<br />
-          <input type="text" name="rank" value={form.rank} onChange={handleChange} required />
+          <input type="text" name="rank" value={form.rank} onChange={handleChange} required style={inputStyle} />
         </label><br /><br />
 
         <label>Category*<br />
@@ -125,7 +177,7 @@ export default function Register() {
               value={form.categoryRank}
               onChange={handleChange}
               required={form.category !== "GEN"}
-            />
+                        />
           </label>
         )}<br /><br />
 
@@ -167,13 +219,13 @@ export default function Register() {
           <option value="IIT Dharwad">IIT Dharwad</option>
         </select><br /><br />
 
-        <label>Any questions you would like to ask?<br />
-          <textarea name="questions" rows={4} value={form.questions} onChange={handleChange}></textarea>
+        <label style={labelStyle}>Any questions you would like to ask?<br />
+          <textarea name="questions" rows={4} value={form.questions} onChange={handleChange}  style={inputStyle}></textarea>
         </label><br /><br />
 
-        <button type="submit">Register</button>
+        <button type="submit" style={buttonStyle}>Register</button>
 
-        {submitted && <p style={{ color: 'green' }}>✔️ Form submitted successfully!</p>}
+        {submitted && <p style={{ color: 'green' , textAlign: 'center', marginTop: '20px'}}>✔️ Form submitted successfully!</p>}
       </form>
     </div>
   );
