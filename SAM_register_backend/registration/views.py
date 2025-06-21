@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import RegistrationSerializer
+<<<<<<< HEAD
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Registration
@@ -44,6 +45,8 @@ def register(request):
     
     # This triggers your 400 error if not POST
     return JsonResponse({'error': 'Only POST allowed'}, status=400)
+=======
+>>>>>>> e09826af727217774927827617d08886d899a0c4
 
 class RegistrationAPI(APIView):
     def post(self, request):

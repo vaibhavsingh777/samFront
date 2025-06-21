@@ -4,12 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
      "dev": "vite",
+=======
+    "dev": "vite",
+>>>>>>> e09826af727217774927827617d08886d899a0c4
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "framer-motion": "^12.18.1",
     "leaflet": "^1.9.4",
     "react": "^19.1.0",
@@ -25,6 +30,17 @@
     "@types/node": "^24.0.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+=======
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.5.2",
+>>>>>>> e09826af727217774927827617d08886d899a0c4
     "@vitejs/plugin-react-swc": "^3.9.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.25.0",

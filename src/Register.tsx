@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
 
+<<<<<<< HEAD
 const inputStyle = {
   width: '100%',
   padding: '10px',
@@ -35,6 +36,8 @@ const buttonStyle = {
 
 
 
+=======
+>>>>>>> e09826af727217774927827617d08886d899a0c4
 export default function Register() {
   const [form, setForm] = useState({
     status: '',
@@ -86,15 +89,22 @@ export default function Register() {
     for (const key in form) {
       formData.append(key, form[key as keyof typeof form] || '');
     }
+<<<<<<< HEAD
     if (form.file) {
   formData.append('file', form.file);
 }
     try {
       const res = await axios.post('http://127.0.0.1:8000/api/register/', formData);
+=======
+
+    try {
+      const res = await axios.post('http://localhost:8000/api/register/', formData);
+>>>>>>> e09826af727217774927827617d08886d899a0c4
       console.log('Submitted form:', form);
       console.log('Server response:', res.data);
       alert('Registration successful!');
       setSubmitted(true);
+<<<<<<< HEAD
     }  catch (err: any) {
   if (err.response) {
     console.error("❌ Response error:", err.response.status, err.response.data);
@@ -123,6 +133,20 @@ export default function Register() {
       <form onSubmit={handleSubmit}>
         <label style={labelStyle}>I am*<br />
           <select name="status" value={form.status} onChange={handleChange} required style={inputStyle}>
+=======
+    } catch (err) {
+      console.error('API error:', err);
+      alert('Registration failed. Please try again.');
+    }
+  };
+
+  return (
+    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto', fontFamily: 'Arial' }}>
+      <h2>SAM 2024 Registration</h2>
+      <form onSubmit={handleSubmit}>
+        <label>I am*<br />
+          <select name="status" value={form.status} onChange={handleChange} required>
+>>>>>>> e09826af727217774927827617d08886d899a0c4
             <option value="">--Select--</option>
             <option value="Joining IIT Bombay this year">Joining IIT Bombay this year</option>
             <option value="Joining some other IIT this year">Joining some other IIT this year</option>
@@ -131,6 +155,7 @@ export default function Register() {
         </label><br /><br />
 
         <label>Full Name*<br />
+<<<<<<< HEAD
           <input type="text" name="name" value={form.name} onChange={handleChange} required style={inputStyle} />
         </label><br /><br />
 
@@ -140,6 +165,17 @@ export default function Register() {
 
         <label>Email ID*<br />
           <input type="email" name="email" value={form.email} onChange={handleChange} required style={inputStyle}/>
+=======
+          <input type="text" name="name" value={form.name} onChange={handleChange} required />
+        </label><br /><br />
+
+        <label>Phone Number (preferably WhatsApp)*<br />
+          <input type="tel" name="phone" value={form.phone} onChange={handleChange} required />
+        </label><br /><br />
+
+        <label>Email ID*<br />
+          <input type="email" name="email" value={form.email} onChange={handleChange} required />
+>>>>>>> e09826af727217774927827617d08886d899a0c4
         </label><br /><br />
 
         <label>Which city will you attend SAM in?<br />
@@ -154,7 +190,11 @@ export default function Register() {
         </label><br /><br />
 
         <label>JEE Advanced 2024 Rank*<br />
+<<<<<<< HEAD
           <input type="text" name="rank" value={form.rank} onChange={handleChange} required style={inputStyle} />
+=======
+          <input type="text" name="rank" value={form.rank} onChange={handleChange} required />
+>>>>>>> e09826af727217774927827617d08886d899a0c4
         </label><br /><br />
 
         <label>Category*<br />
@@ -177,7 +217,11 @@ export default function Register() {
               value={form.categoryRank}
               onChange={handleChange}
               required={form.category !== "GEN"}
+<<<<<<< HEAD
                         />
+=======
+            />
+>>>>>>> e09826af727217774927827617d08886d899a0c4
           </label>
         )}<br /><br />
 
@@ -219,6 +263,7 @@ export default function Register() {
           <option value="IIT Dharwad">IIT Dharwad</option>
         </select><br /><br />
 
+<<<<<<< HEAD
         <label style={labelStyle}>Any questions you would like to ask?<br />
           <textarea name="questions" rows={4} value={form.questions} onChange={handleChange}  style={inputStyle}></textarea>
         </label><br /><br />
@@ -230,3 +275,16 @@ export default function Register() {
     </div>
   );
 }
+=======
+        <label>Any questions you would like to ask?<br />
+          <textarea name="questions" rows={4} value={form.questions} onChange={handleChange}></textarea>
+        </label><br /><br />
+
+        <button type="submit">Register</button>
+
+        {submitted && <p style={{ color: 'green' }}>✔️ Form submitted successfully!</p>}
+      </form>
+    </div>
+  );
+}
+>>>>>>> e09826af727217774927827617d08886d899a0c4

@@ -1,0 +1,330 @@
+/* Base styles */
+:root {
+  --primary: #6c63ff;
+  --secondary: #ff6584;
+  --accent: #42b883;
+  --dark: #2c3e50;
+  --light: #f8f9fa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar styles */
+.navbar {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.nav-links:hover {
+  opacity: 0.8;
+}
+
+/* Testimonial styles */
+.testimonials-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+/* Footer styles */
+footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+}
+/* Event Card Styles */
+.event-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.event-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-image {
+  transform: scale(1.05);
+}
+
+.event-date {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-day {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.event-month {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+.event-content {
+  padding: 1.5rem;
+}
+
+.event-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  color: var(--dark);
+}
+
+.event-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--secondary);
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.event-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.event-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.event-link:hover {
+  color: var(--secondary);
+}
+
+.event-link svg {
+  transition: transform 0.3s ease;
+}
+
+.event-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* Events Page Layout */
+.events-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.event-media-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image {
+  transform: scale(1.05);
+}
+.faqs-page {
+  background-color: #1a237e; /* Light blue */
+  min-height: 100vh;
+}
+.faq-question {
+  color: white;
+  font-weight: 600;
+}
+
+.faq-answer {
+  color: #e5e7eb; /* gray-200 */
+}
+/* If you're using plain CSS instead of Tailwind */
+.testimonial-card {
+  background: rgba(30, 58, 138, 0.7); /* blue-800 with 70% opacity */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.testimonial-content p {
+  color: white;
+  font-style: italic;
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  margin-right: 1rem;
+}
+
+.testimonial-author h4 {
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem; /* text-xl */
+}
+
+.testimonial-author p {
+  color: #bfdbfe; /* blue-200 */
+}
+/* For smooth transitions */
+body {
+  transition: background-color 0.3s ease;
+}
+
+/* If you want to apply this blue to all pages */
+.main-layout {
+  background-color: #1A237E;
+  min-height: 100vh;
+}/* Custom styles for better visual separation */
+.testimonial-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.testimonial-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+#testimonials-header {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.testimonial-author {
+  background: linear-gradient(90deg, rgba(26,35,126,0.3) 0%, rgba(26,35,126,0.8) 100%);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-bottom: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}

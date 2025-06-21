@@ -15,7 +15,11 @@ class Registration(models.Model):
     rank = models.CharField(max_length=20)
     category = models.CharField(max_length=20)
     categoryRank = models.CharField(max_length=20, blank=True, null=True)
+<<<<<<< HEAD
     file = models.FileField(upload_to='uploads/', blank=True, null=True)
+=======
+    file = models.FileField(upload_to='uploads/')
+>>>>>>> e09826af727217774927827617d08886d899a0c4
     iitOther = models.CharField(max_length=100, blank=True, null=True)
     questions = models.TextField(blank=True, null=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
