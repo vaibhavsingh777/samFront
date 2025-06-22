@@ -200,7 +200,7 @@ const Testimonials: React.FC = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        border: "2px solid white",
+
         boxShadow:
           "0 0 20px 4px rgba(255,255,255,0.6), 0 0 40px 10px rgba(255,255,255,0.4) inset",
         background: "#1A237E",
