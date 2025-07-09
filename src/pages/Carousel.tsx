@@ -1,69 +1,50 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import './Carousel.css';
 
-interface CarouselProps {
-  items: React.ReactNode[];
-  autoPlay?: boolean;
-  interval?: number;
-}
+import img1 from './images/photo1.jpg';
+import img2 from './images/photo1.jpg';
+import img3 from './images/photo1.jpg';
+import img4 from './images/photo1.jpg';
+import img5 from './images/photo1.jpg';
 
-export const Carousel: React.FC<CarouselProps> = ({
-  items,
-  autoPlay = false,
-  interval = 3000,
-}) => {
+const images = [img1, img2, img3, img4, img5];
+const visibleCount = 3;
+
+const Carousel = () => {
   const [index, setIndex] = useState(0);
-  const total = items.length;
 
-  const next = () => {
-    setIndex((prev) => (prev + 1) % total);
+  const nextSlide = () => {
+    setIndex((prev) => (prev < images.length - visibleCount ? prev + 1 : 0));
   };
 
-  const prev = () => {
-    setIndex((prev) => (prev - 1 + total) % total);
+  const prevSlide = () => {
+    setIndex((prev) => (prev > 0 ? prev - 1 : images.length - visibleCount));
   };
 
+  // Auto-slide effect
   useEffect(() => {
-    if (!autoPlay) return;
-    const id = setInterval(next, interval);
-    return () => clearInterval(id);
-  }, [autoPlay, interval]);
+    const interval = setInterval(nextSlide, 3000); // change every 3s
+    return () => clearInterval(interval); // cleanup
+  }, []);
 
   return (
-    <div className="relative w-full overflow-hidden bg-black py-8">
-      <div className="mx-auto w-[90%] h-[400px] relative overflow-hidden">
-        <motion.div
-          className="flex transition-transform duration-500 ease-in-out"
-          animate={{ x: `-${(index * 100) / total}%` }}
+    <div className="carousel-container">
+      <button className="nav-btn" onClick={prevSlide}>❮</button>
+      <div className="carousel-window">
+        <div
+          className="carousel-track"
           style={{
-            width: `${total * 25}%`, // 4 images × 25% = 100%
+            transform: `translateX(-${index * (100 / visibleCount)}%)`,
           }}
         >
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="w-1/4 h-[400px] px-2 flex-shrink-0 flex-grow-0"
-            >
-              {item}
-            </div>
+          {images.map((src, i) => (
+            <img key={i} src={src} alt={`Slide ${i + 1}`} />
           ))}
-        </motion.div>
-
-        {/* Controls */}
-        <button
-          onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-white z-10"
-        >
-          <ArrowLeft />
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-white z-10"
-        >
-          <ArrowRight />
-        </button>
+        </div>
       </div>
+      <button className="nav-btn" onClick={nextSlide}>❯</button>
     </div>
   );
 };
+
+export default Carousel;
