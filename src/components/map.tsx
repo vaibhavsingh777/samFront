@@ -5,12 +5,11 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// Custom small icon
 const smallIcon = new L.Icon({
   iconUrl: markerIcon,
   iconRetinaUrl: markerIcon2x,
   shadowUrl: markerShadow,
-  iconSize: [18, 28], // smaller size
+  iconSize: [18, 28],
   iconAnchor: [9, 28],
   popupAnchor: [0, -28],
   shadowSize: [28, 28],
@@ -45,33 +44,31 @@ const locations = [
 ];
 
 const IndiaMap = () => (
-  <MapContainer
-    center={[22.9734, 78.6569]}
-    zoom={4} // Reduced zoom
-    style={{
-      height: "140px",
-      width: "100%",
-      maxWidth: "170px",
-      minWidth: "120px",
-      borderRadius: "10px",
-      margin: "0 auto",
-      boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
-    }}
-  >
-    <TileLayer
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    />
-    {locations.map((loc) => (
-      <Marker key={loc.name} position={loc.position} icon={smallIcon}>
-        <Popup>
-          <a href={loc.link} target="_blank" rel="noopener noreferrer">
-            {loc.name}
-          </a>
-        </Popup>
-      </Marker>
-    ))}
-  </MapContainer>
+  <div style={{ width: "100%", height: "100%" }}>
+    <MapContainer
+      center={[22.9734, 78.6569]}
+      zoom={4}
+      style={{
+        width: "100%",
+        height: "100%",
+        boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+      }}
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      {locations.map((loc) => (
+        <Marker key={loc.name} position={loc.position} icon={smallIcon}>
+          <Popup>
+            <a href={loc.link} target="_blank" rel="noopener noreferrer">
+              {loc.name}
+            </a>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  </div>
 );
 
 export default IndiaMap;
