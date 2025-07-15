@@ -5,14 +5,16 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
+// SAM-themed upgraded icon
 const smallIcon = new L.Icon({
   iconUrl: markerIcon,
   iconRetinaUrl: markerIcon2x,
   shadowUrl: markerShadow,
-  iconSize: [18, 28],
-  iconAnchor: [9, 28],
-  popupAnchor: [0, -28],
-  shadowSize: [28, 28],
+  iconSize: [26, 42], // Make it larger
+  iconAnchor: [13, 42], // Center bottom point
+  popupAnchor: [0, -38], // Popup sits above
+  shadowSize: [42, 42],
+  className: "sam-marker", // Optional: use to apply glowing styles via CSS
 });
 
 const locations = [
