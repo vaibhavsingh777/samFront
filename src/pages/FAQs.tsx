@@ -222,6 +222,7 @@ const FAQs: React.FC = () => {
         backgroundRepeat: "no-repeat",
         position: "relative",
         overflow: "hidden",
+        boxShadow: "0 4px 24px hsl(0, 0.00%, 100.00%)",
       }}
     >
       {/* Blurred background overlay */}
