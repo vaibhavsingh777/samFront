@@ -47,7 +47,7 @@ const IndiaMap = () => (
   <div style={{ width: "100%", height: "100%" }}>
     <MapContainer
       center={[22.9734, 78.6569]}
-      zoom={4}
+      zoom={5.2}
       style={{
         width: "100%",
         height: "100%",
