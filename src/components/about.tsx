@@ -36,7 +36,7 @@ const About: React.FC = () => (
         maxWidth: "900px",
         margin: "0 auto",
         padding: "2.5rem 2rem",
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
+        backgroundColor: "#23a1c46e",
         backdropFilter: "blur(12px)",
         border: "1px solid rgba(255, 255, 255, 0.3)",
         borderRadius: "14px",
@@ -64,7 +64,7 @@ const About: React.FC = () => (
           fontSize: "clamp(1rem, 2.5vw, 1.15rem)", // Responsive
           lineHeight: 1.7,
           textAlign: "justify",
-          color: "#f8f9fa",
+          color: "hsla(196, 79%, 94%, 0.85)",
           textShadow: "0 1px 5px rgba(0,0,0,0.3)",
         }}
       >
@@ -76,19 +76,20 @@ const About: React.FC = () => (
         esteemed alumni and the current students (our team), respectively.
         <br />
         <br />
-        <span style={{ color: "#fff", fontWeight: 700 }}>Structure:</span>
+        <div style={{ textAlign: "center", margin: "1rem 0" }}>
+  <span style={{ color: "#fff", fontWeight: 700, fontSize: "1.8rem", }}>Structure</span>
+</div>
         <br />
-        <span style={{ fontWeight: 600 }}>1.</span> Speech by an alumnus
-        (telling about the life after graduating from the institute with a
-        broader perspective i.e. not specific to a particular field)
-        <br />
-        <span style={{ fontWeight: 600 }}>2.</span> Presentation by the Chapter
-        (in case of IITB, we have alumni chapters), briefing about the
-        activities done round the year (the invited students as well as the
-        current students will get to know about these)
-        <br />
-        <span style={{ fontWeight: 600 }}>3.</span> Common Q&amp;A session where
-        the doubts of students and their parents will be addressed.
+        <span style={{ fontWeight: 600 }}>1.</span> Speech by an alumnus,
+        telling about the life after graduating from the institute with a
+        broader perspective non-specific to a particular field.
+        <br /><br />
+        <span style={{ fontWeight: 600 }}>2.</span> Presentation of the IIT Bombay Alumni Chapter
+        , briefing about the
+        happenings in the institute round the year, for both the incoming and current students
+        <br /><br />
+        <span style={{ fontWeight: 600 }}>3.</span> A Q&amp;A session addressing queries of
+        students and parents.
       </p>
     </div>
   </section>
