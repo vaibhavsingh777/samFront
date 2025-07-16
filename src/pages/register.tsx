@@ -223,7 +223,8 @@ const Register: React.FC = () => {
             {errors.form}
           </div>
         )}
-
+        
+        {!submitted ? (
         <form onSubmit={handleSubmit} style={{ color: "#fff" }} noValidate>
           <FormField
             label="I am"
@@ -559,28 +560,35 @@ const Register: React.FC = () => {
           >
             {loading ? "Registering..." : "Register"}
           </motion.button>
+           </form>  
+        ):
+         (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    style={{
+      textAlign: "center",
+      color: "lightgreen",
+      padding: "2rem 1rem",
+      fontSize: "1.4rem",
+      fontWeight: 700,
+      lineHeight: 1.6,
+    }}
+  >
+    Registration Successful! <br />
+    
+  </motion.div>
+)}
 
-          {submitted && (
-            <motion.p
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              style={{
-                marginTop: "1.2rem",
-                color: "lightgreen",
-                textAlign: "center",
-                fontSize: "1.13rem",
-                fontWeight: 600,
-              }}
-              role="status"
-            >
-              🎉 Registration Successful!
-            </motion.p>
-          )}
-        </form>
-      </div>
+
+
+        
+        </div>
+
     </motion.section>
   );
 };
+
 
 export default Register;
