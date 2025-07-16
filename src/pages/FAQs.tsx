@@ -18,10 +18,8 @@ interface CTMCardProps {
 const CTMCard: React.FC<CTMCardProps> = ({ img, name, phone }) => (
   <div
     style={{
-      background: "rgba(255,255,255,0.13)",
-      backdropFilter: "blur(10px) saturate(180%)",
-      WebkitBackdropFilter: "blur(10px) saturate(180%)",
-      border: "1.5px solid rgba(255,255,255,0.28)",
+      background: "#1A237E", // changed to blue
+      border: "2px solid #FFD700", // gold border
       borderRadius: "18px",
       padding: "2rem 1.5rem",
       color: "#fff",
@@ -78,10 +76,8 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
   return (
     <div
       style={{
-        background: "rgba(255,255,255,0.13)",
-        backdropFilter: "blur(10px) saturate(180%)",
-        WebkitBackdropFilter: "blur(10px) saturate(180%)",
-        border: "1.5px solid rgba(255,255,255,0.28)",
+        background: "#1A237E", // changed to blue
+        border: "2px solid #FFD700", // gold border
         borderRadius: "14px",
         marginBottom: "1rem",
         padding: "1rem 1.5rem",
@@ -107,11 +103,7 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
-          {isOpen ? (
-            <FaChevronDown color="#FFD700" size={18} />
-          ) : (
-            <FaChevronRight color="#FFD700" size={18} />
-          )}
+         
           {question}
         </div>
         {isOpen ? (
@@ -152,7 +144,6 @@ const FAQs: React.FC = () => {
     );
 
     if (containerRef.current) observer.observe(containerRef.current);
-
     return () => {
       if (containerRef.current) observer.unobserve(containerRef.current);
     };
@@ -187,23 +178,13 @@ const FAQs: React.FC = () => {
   ];
 
   const CTMData = [
-    {
-      img: ctm1,
-      name: "Aarav Verma",
-      phone: "+91 98765 43210",
-    },
-    {
-      img: ctm2,
-      name: "Ishita Rao",
-      phone: "+91 98765 12345",
-    },
+    { img: ctm1, name: "Kapil Chhipa", phone: "+91 9950913954" },
+    { img: ctm2, name: "Mohit Yadav", phone: "+91 9588887044" },
   ];
 
   const scrollToEventHeads = () => {
     const element = document.getElementById("event-heads-section");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -215,26 +196,42 @@ const FAQs: React.FC = () => {
         color: "#fff",
         fontFamily: "'Poppins', sans-serif",
         boxSizing: "border-box",
-        backgroundColor: "#1A237E",
-        backgroundImage: `url(${back3})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        background: `url(${back3}) center/cover no-repeat`, // set background image directly
+        // removed backgroundAttachment fixed to allow scroll
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Blurred background overlay */}
+      {/* Background image div */}
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          background: `url(${back3}) center/cover no-repeat`,
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          backgroundImage: `url(${back3})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           filter: "blur(6px) brightness(0.7)",
-          zIndex: 0,
+          zIndex: -2,
         }}
       />
-      {/* Frosted glass main overlay */}
+
+      {/* Optional overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "rgba(0,0,0,0.4)",
+          zIndex: -1,
+        }}
+      />
+
       <div
         style={{
           position: "relative",
@@ -276,8 +273,8 @@ const FAQs: React.FC = () => {
             style={{
               padding: "0.8rem 1.6rem",
               borderRadius: "8px",
-              background: "#FFD700", // gold
-              color: "#1A237E", // solid blue text
+              background: "#FFD700",
+              color: "#1A237E",
               fontWeight: 600,
               fontSize: "1rem",
               border: "none",
@@ -296,13 +293,11 @@ const FAQs: React.FC = () => {
             Still have questions?
           </button>
         </div>
-        {/* Event Heads */}
+
         <div
           id="event-heads-section"
           ref={containerRef}
-          style={{
-            marginTop: "5rem",
-          }}
+          style={{ marginTop: "5rem" }}
         >
           <h2
             style={{
@@ -331,24 +326,6 @@ const FAQs: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* Apple "liquid glass" shine pseudo-element */}
-      <style>{`
-        .glass::after {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(255,255,255,0.09);
-          border-radius: 18px;
-          backdrop-filter: blur(2px);
-          box-shadow:
-            inset -10px -8px 0px -11px rgba(255,255,255,0.7),
-            inset 0px -9px 0px -8px rgba(255,255,255,0.5);
-          opacity: 0.55;
-          z-index: 0;
-          filter: blur(1px) brightness(110%);
-          pointer-events: none;
-        }
-      `}</style>
     </section>
   );
 };
