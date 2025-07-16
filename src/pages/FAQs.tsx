@@ -18,10 +18,8 @@ interface CTMCardProps {
 const CTMCard: React.FC<CTMCardProps> = ({ img, name, phone }) => (
   <div
     style={{
-      background: "rgba(255,255,255,0.13)",
-      backdropFilter: "blur(10px) saturate(180%)",
-      WebkitBackdropFilter: "blur(10px) saturate(180%)",
-      border: "1.5px solid rgba(255,255,255,0.28)",
+      background: "#1A237E", // changed to blue
+      border: "2px solid #FFD700", // gold border
       borderRadius: "18px",
       padding: "2rem 1.5rem",
       color: "#fff",
@@ -78,10 +76,8 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
   return (
     <div
       style={{
-        background: "rgba(255,255,255,0.13)",
-        backdropFilter: "blur(10px) saturate(180%)",
-        WebkitBackdropFilter: "blur(10px) saturate(180%)",
-        border: "1.5px solid rgba(255,255,255,0.28)",
+        background: "#1A237E", // changed to blue
+        border: "2px solid #FFD700", // gold border
         borderRadius: "14px",
         marginBottom: "1rem",
         padding: "1rem 1.5rem",
@@ -204,16 +200,16 @@ const FAQs: React.FC = () => {
         color: "#fff",
         fontFamily: "'Poppins', sans-serif",
         boxSizing: "border-box",
-        background: `url(${back3}) center/cover no-repeat`, // <- Set background image directly
-        backgroundAttachment: "fixed", // <- Prevent scroll zoom
+        background: `url(${back3}) center/cover no-repeat`, // set background image directly
+        // removed backgroundAttachment fixed to allow scroll
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Fixed background image */}
+      {/* Background image div */}
       <div
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           left: 0,
           width: "100vw",
@@ -227,10 +223,10 @@ const FAQs: React.FC = () => {
         }}
       />
 
-      {/* Optional overlay for darkness */}
+      {/* Optional overlay */}
       <div
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           left: 0,
           width: "100vw",

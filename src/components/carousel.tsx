@@ -29,6 +29,7 @@ const Carousel: React.FC = () => {
         marginBottom: "-2rem",
         marginTop: "-4rem",
         boxShadow: "0 4px 24px rgb(255, 255, 255)",
+        zIndex: 10,
       }}
     >
       {/* Heading */}
@@ -42,6 +43,7 @@ const Carousel: React.FC = () => {
           marginBottom: "2rem",
           textAlign: "center",
           marginBottom: "-0.5rem",
+          zIndex: 1,
         }}
       >
         SAM MEMORIES

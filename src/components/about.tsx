@@ -24,7 +24,7 @@ const About: React.FC = () => (
         backgroundPosition: "center",
         filter: "blur(3px) brightness(0.7)",
         opacity: 1,
-        zIndex: 0,
+        zIndex: 1,
       }}
     />
 
