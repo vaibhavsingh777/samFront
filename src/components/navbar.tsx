@@ -143,7 +143,7 @@ const Navbar: React.FC = () => {
           transition: transform 0.2s, color 0.2s;
         }
         .navbar-register:hover {
-          color: #FFD700;
+          color: #ff000dff;
           transform: scale(1.07);
         }
         .navbar-hamburger {

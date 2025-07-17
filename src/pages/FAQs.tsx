@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaChevronRight, FaChevronDown, FaPlus, FaMinus } from "react-icons/fa";
 import ctm1 from "../assets/img.jpeg";
 import ctm2 from "../assets/img.jpeg";
-import back3 from "../assets/back3.png";
+import Carousel from "../components/carousel";
 
 interface FAQItem {
   question: string;
@@ -18,8 +18,8 @@ interface CTMCardProps {
 const CTMCard: React.FC<CTMCardProps> = ({ img, name, phone }) => (
   <div
     style={{
-      background: "#1A237E", // changed to blue
-      border: "2px solid #FFD700", // gold border
+      background: "#1A237E",
+      border: "2px solid #FFD700",
       borderRadius: "18px",
       padding: "2rem 1.5rem",
       color: "#fff",
@@ -76,8 +76,8 @@ const FAQItemComponent: React.FC<FAQItem> = ({ question, answer }) => {
   return (
     <div
       style={{
-        background: "#1A237E", // changed to blue
-        border: "2px solid #FFD700", // gold border
+        background: "#1A237E",
+        border: "2px solid #FFD700",
         borderRadius: "14px",
         marginBottom: "1rem",
         padding: "1rem 1.5rem",
@@ -200,41 +200,12 @@ const FAQs: React.FC = () => {
         color: "#fff",
         fontFamily: "'Poppins', sans-serif",
         boxSizing: "border-box",
-        background: `url(${back3}) center/cover no-repeat`, // set background image directly
-        // removed backgroundAttachment fixed to allow scroll
+        background: "#191970",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background image div */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          backgroundImage: `url(${back3})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          filter: "blur(6px) brightness(0.7)",
-          zIndex: -2,
-        }}
-      />
-
-      {/* Optional overlay */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          backgroundColor: "rgba(0,0,0,0.4)",
-          zIndex: -1,
-        }}
-      />
+      <Carousel />
 
       <div
         style={{
@@ -260,7 +231,7 @@ const FAQs: React.FC = () => {
             textAlign: "center",
             marginBottom: "2.5rem",
             textShadow: "0 0 8px rgba(255, 255, 255, 0.3)",
-            borderBottom: "2px solid rgba(255,255,255,0.3)",
+            borderBottom: "2px solid rgba(255, 255, 255, 1)",
             paddingBottom: "0.6rem",
             marginTop: "-2rem",
           }}
@@ -311,6 +282,7 @@ const FAQs: React.FC = () => {
               marginBottom: "2.5rem",
               textShadow: "0 0 8px rgba(255, 255, 255, 0.3)",
               marginTop: "-3rem",
+              borderBottom: "2px solid rgba(255, 255, 255, 1)",
             }}
           >
             Event Heads

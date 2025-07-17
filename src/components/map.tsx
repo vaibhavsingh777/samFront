@@ -1,76 +1,83 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-// SAM-themed upgraded icon
-const smallIcon = new L.Icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [26, 42], // Make it larger
-  iconAnchor: [13, 42], // Center bottom point
-  popupAnchor: [0, -38], // Popup sits above
-  shadowSize: [42, 42],
-  className: "sam-marker", // Optional: use to apply glowing styles via CSS
-});
+import React from "react";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+} from "@vis.gl/react-google-maps";
 
 const locations = [
   {
     name: "Mumbai",
-    position: [19.076, 72.8777],
+    position: { lat: 19.076, lng: 72.8777 },
     link: "https://goo.gl/maps/YOUR_MUMBAI_LOCATION_LINK",
+    pinColor: "#FFD700",
   },
   {
     name: "Pune",
-    position: [18.5204, 73.8567],
+    position: { lat: 18.5204, lng: 73.8567 },
     link: "https://goo.gl/maps/YOUR_PUNE_LOCATION_LINK",
+    pinColor: "#FFD700",
   },
   {
     name: "Delhi",
-    position: [28.6139, 77.209],
+    position: { lat: 28.6139, lng: 77.209 },
     link: "https://goo.gl/maps/YOUR_DELHI_LOCATION_LINK",
+    pinColor: "#FFD700",
   },
   {
     name: "Indore",
-    position: [22.7196, 75.8577],
+    position: { lat: 22.7196, lng: 75.8577 },
     link: "https://goo.gl/maps/YOUR_INDORE_LOCATION_LINK",
+    pinColor: "#FFD700",
   },
   {
     name: "Jaipur",
-    position: [26.9124, 75.7873],
+    position: { lat: 26.9124, lng: 75.7873 },
     link: "https://goo.gl/maps/YOUR_JAIPUR_LOCATION_LINK",
+    pinColor: "#FFD700",
   },
 ];
 
-const IndiaMap = () => (
-  <div style={{ width: "100%", height: "100%" }}>
-    <MapContainer
-      center={[23.56925, 75.02045]}
-      zoom={6}
-      style={{
-        width: "100%",
-        height: "100%",
-        boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
-      }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {locations.map((loc) => (
-        <Marker key={loc.name} position={loc.position} icon={smallIcon}>
-          <Popup>
-            <a href={loc.link} target="_blank" rel="noopener noreferrer">
-              {loc.name}
+const mapCenter = { lat: 22.9734, lng: 78.6569 }; // Center of India
+
+const IndiaMap: React.FC = () => {
+  return (
+    <APIProvider apiKey="YOUR_GOOGLE_MAPS_API_KEY">
+      <Map
+        defaultZoom={5}
+        defaultCenter={mapCenter}
+        style={{
+          width: "100%",
+          height: "100%",
+          minHeight: "180px",
+          minWidth: "200px",
+          borderRadius: "10px",
+          boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+        }}
+        // To use advanced MapID styling, add: mapId="YOUR_MAP_ID"
+      >
+        {locations.map((loc) => (
+          <AdvancedMarker key={loc.name} position={loc.position}>
+            <a
+              href={loc.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={loc.name}
+              style={{ textDecoration: "none" }}
+            >
+              <Pin
+                background={loc.pinColor}
+                glyphColor="#1A237E"
+                borderColor="#fff"
+                scale={1.3}
+              />
             </a>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
-  </div>
-);
+          </AdvancedMarker>
+        ))}
+      </Map>
+    </APIProvider>
+  );
+};
 
 export default IndiaMap;

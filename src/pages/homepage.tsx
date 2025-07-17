@@ -4,6 +4,7 @@ import CitiesWithMapLayout from "../components/CitiesWithMapLayout";
 import Testimonials from "./testimonials";
 import FAQs from "./FAQs";
 import Carousel from "../components/carousel";
+import CitiesBanners from "../components/citybanner";
 
 const HomePage: React.FC = () => (
   <div style={{ margin: 0, padding: 0 }}>
@@ -11,12 +12,12 @@ const HomePage: React.FC = () => (
       <About />
     </div>
     <div id="cities">
-      <CitiesWithMapLayout />
+      <CitiesBanners />
     </div>
     <div id="testimonials">
       <Testimonials />
     </div>
-    <Carousel />
+
     <div id="faqs">
       <FAQs />
     </div>

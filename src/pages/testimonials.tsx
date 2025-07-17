@@ -5,6 +5,7 @@ import img3 from "../assets/img.jpeg";
 import img4 from "../assets/img.jpeg";
 import img5 from "../assets/img.jpeg";
 import backgroundTestimonial from "../assets/back.png";
+import Carousel from "../components/carousel";
 
 const testimonialsData = [
   {

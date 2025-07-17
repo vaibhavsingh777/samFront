@@ -19,31 +19,32 @@ const Carousel: React.FC = () => {
     <section
       style={{
         width: "100vw",
-        background: "#1A237E", // Deep Blue Background
+        // background: "#1A237E", // Removed
+        background: "transparent", // Let parent bg show
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem 0 3rem 0",
         overflow: "hidden",
-        marginBottom: "-2rem",
-        marginTop: "-4rem",
-        boxShadow: "0 4px 24px rgb(255, 255, 255)",
+
         zIndex: 10,
       }}
     >
       {/* Heading */}
       <h2
         style={{
-          fontFamily: "'Poppins', sans-serif",
-          fontSize: "2.9rem",
-          fontWeight: 800,
-          color: "white",
-          letterSpacing: "1.2px",
-          marginBottom: "2rem",
+          fontSize: "3rem",
+          fontWeight: 700,
           textAlign: "center",
-          marginBottom: "-0.5rem",
-          zIndex: 1,
+          marginBottom: "2.5rem",
+          textShadow: "0 0 8px rgba(255, 255, 255, 0.3)",
+          borderBottom: "2px solid rgba(255, 255, 255, 1)",
+          paddingBottom: "0.6rem",
+          marginTop: "-3rem",
+          lineHeight: 1.5,
+          fontFamily: "'Dancing Script', cursive",
+          color: "#fff",
         }}
       >
         SAM MEMORIES
