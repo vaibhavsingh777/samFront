@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import merge1 from "../assets/back.png";
+import '../App.css';
 
 
 
@@ -20,8 +21,16 @@ const FormField: React.FC<FormFieldProps> = ({
   error,
   children,
 }) => (
-  <div style={{ marginBottom: "1.25rem" }}>
-    <label htmlFor={htmlFor} style={{ fontWeight: 500, fontFamily: "'Montserrat', sans-serif", fontSize: "1rem",}}>
+  
+  <div className="form-field" style={{ marginBottom: "1.25rem" }}>
+    <label
+      htmlFor={htmlFor}
+      style={{
+        fontWeight: 500,
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: "1rem",
+      }}
+    >
       {label}
       {required && <span style={{ color: "#ff4d4f" }}> *</span>}
     </label>
@@ -248,16 +257,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               value={form.status}
               onChange={handleChange}
               required
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
               
-                
-              }}
               aria-invalid={!!errors.status}
             >
               <option value="">-- Select --</option>
@@ -281,14 +281,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               onChange={handleChange}
               required
               autoComplete="name"
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+            
               aria-invalid={!!errors.name}
             />
           </FormField>
@@ -309,15 +302,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               pattern="[0-9]{10}"
               maxLength={10}
               autoComplete="tel"
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-                 
-              }}
+              
               aria-invalid={!!errors.phone}
             />
           </FormField>
@@ -336,14 +321,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               onChange={handleChange}
               required
               autoComplete="email"
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+             
               aria-invalid={!!errors.email}
             />
           </FormField>
@@ -360,14 +338,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               value={form.city}
               onChange={handleChange}
               required
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+              
               aria-invalid={!!errors.city}
             >
               <option value="">-- Select City --</option>
@@ -390,14 +361,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               value={form.rank}
               onChange={handleChange}
               required
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+              
               aria-invalid={!!errors.rank}
             />
           </FormField>
@@ -414,14 +378,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               value={form.category}
               onChange={handleChange}
               required
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+              
               aria-invalid={!!errors.category}
             >
               <option value="">-- Select Category --</option>
@@ -442,14 +399,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
                 type="text"
                 value={form.categoryRank}
                 onChange={handleChange}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: "10px",
-                  border: "1px solid #bbb",
-                  background: "rgba(255,255,255,0.9)",
-                  color: "#222",
-                }}
+               
               />
             </FormField>
           )}
@@ -467,14 +417,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               accept="image/*"
               onChange={handleChange}
               required
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+              
               aria-invalid={!!errors.file}
             />
           </FormField>
@@ -488,14 +431,7 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               name="iitOther"
               value={form.iitOther}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-              }}
+              
             >
               <option value="">-- Select IIT --</option>
               {[
@@ -536,43 +472,24 @@ boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
               rows={3}
               value={form.questions}
               onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "10px",
-                border: "1px solid #bbb",
-                background: "rgba(255,255,255,0.9)",
-                color: "#222",
-                resize: "vertical",
-              }}
+             
             />
           </FormField>
 
-          <motion.button
-            whileHover={{ scale: 1.04, backgroundColor: "#FFC300" }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "13px",
-              borderRadius: "10px",
-              backgroundColor: loading ? "#FFD70099" : "#FFD700",
-              color: "#1A237E",
-              fontSize: "1.16rem",
-              fontWeight: 700,
-              cursor: loading ? "not-allowed" : "pointer",
-              border: "none",
-              marginTop: "0.7rem",
-              boxShadow: "0 4px 16px rgba(255,215,0,0.13)",
-              letterSpacing: "0.01em",
-              transition: "background 0.18s",
-            }}
-            aria-busy={loading}
-          >
-            {loading ? "Registering..." : "Register"}
-          </motion.button>
+ <motion.button
+  whileHover={{ scale: 1.04 }}
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: "spring", stiffness: 300 }}
+  type="submit"
+  disabled={loading}
+  className="register-button"
+  aria-busy={loading}
+>
+  {loading ? "Registering..." : "Register"}
+</motion.button>
+
+
+
            </form>  
         ):
          (
