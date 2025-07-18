@@ -3,6 +3,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import merge1 from "../assets/back.png";
 
+
+
 // --- Reusable FormField Component ---
 interface FormFieldProps {
   label: string;
@@ -19,9 +21,9 @@ const FormField: React.FC<FormFieldProps> = ({
   children,
 }) => (
   <div style={{ marginBottom: "1.25rem" }}>
-    <label htmlFor={htmlFor} style={{ fontWeight: 500 }}>
+    <label htmlFor={htmlFor} style={{ fontWeight: 500, fontFamily: "'Montserrat', sans-serif", fontSize: "1rem",}}>
       {label}
-      {required && <span style={{ color: "#FFD700" }}> *</span>}
+      {required && <span style={{ color: "#ff4d4f" }}> *</span>}
     </label>
     <div style={{ marginTop: "0.5rem" }}>{children}</div>
     {error && (
@@ -146,21 +148,23 @@ const Register: React.FC = () => {
         position: "relative",
         width: "100%",
         minHeight: "100vh",
-        overflow: "hidden",
         fontFamily: "'Poppins', sans-serif",
-        background: "#181c28",
+        background: "hsla(225, 25%, 13%, 1.00)",
+        overflow: "hidden",
       }}
     >
       {/* Background Image & Animated Blob */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `url(${merge1})`,
+          //position: "absolute",
+          //inset: 0, zIndex: 0,
+          //backgroundImage: `url(${merge1})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "blur(6px) brightness(0.6)",
-          zIndex: 0,
+          // filter: "blur(2px) brightness(0.9)",
+           
+          
+
         }}
       />
       <motion.div
@@ -170,7 +174,7 @@ const Register: React.FC = () => {
           position: "absolute",
           width: "420px",
           height: "420px",
-          background: "radial-gradient(circle, #ffd70044, transparent)",
+          //background: "radial-gradient(circle, #ffd70044, transparent)",
           borderRadius: "50%",
           top: "10%",
           left: "6%",
@@ -187,12 +191,18 @@ const Register: React.FC = () => {
           maxWidth: "680px",
           margin: "4rem auto",
           padding: "2.5rem 2rem",
-          background: "rgba(255,255,255,0.12)",
-          backdropFilter: "blur(14px) saturate(120%)",
+          background: "linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08))",
+           backdropFilter: "blur(16px) saturate(160%)",
           borderRadius: "20px",
-          border: "1.5px solid rgba(255,255,255,0.22)",
-          boxShadow: "0 10px 32px rgba(0,0,0,0.22)",
+          //border: "1.5px solid rgba(255,255,255,0.22)",
+border: "2px solid rgba(255, 255, 255, 0.6)",
+boxShadow: "0 0 12px rgba(255, 215, 0, 0.5)", // Optional glowing border
+
+
+        
           color: "#fff",
+          
+          
         }}
       >
         <h2
@@ -245,6 +255,8 @@ const Register: React.FC = () => {
                 border: "1px solid #bbb",
                 background: "rgba(255,255,255,0.9)",
                 color: "#222",
+              
+                
               }}
               aria-invalid={!!errors.status}
             >
@@ -304,6 +316,7 @@ const Register: React.FC = () => {
                 border: "1px solid #bbb",
                 background: "rgba(255,255,255,0.9)",
                 color: "#222",
+                 
               }}
               aria-invalid={!!errors.phone}
             />
